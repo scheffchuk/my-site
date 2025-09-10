@@ -24,16 +24,21 @@ pnpm format:check        # Check formatting without changes
 
 **Content Generation:**
 ```bash
-pnpm generate    # Run custom TypeScript generation scripts
+pnpm generate    # Generate vector embeddings for AI chat system (processes src/lib/ files)
 ```
 
 ## Architecture Overview
 
-### Internationalization (i18n)
+### Current Architecture State
+- **Layout Restructure:** Recently migrated from `/[locale]/...` structure to simpler routing with `(with-layout)` group
+- **Component Organization:** Legacy components moved to `(legacy-components)` folder during rebuild
+- **New Component System:** Fresh UI components being developed alongside legacy ones
+
+### Internationalization (i18n)  
 - **Multi-locale support:** English (en) and Japanese (ja), with Japanese as default
-- **Route-based locales:** `/[locale]/...` structure using next-intl
-- **Locale switching:** Available via dock component and standalone switcher
+- **Locale switching:** Available via dock component and standalone switcher  
 - **Translation files:** Messages organized by locale in standard next-intl structure
+- **Note:** Route structure recently simplified - verify current i18n implementation
 
 ### Layout & Theming
 - **Theme System:** Uses next-themes with class-based dark mode via Tailwind
@@ -53,8 +58,10 @@ pnpm generate    # Run custom TypeScript generation scripts
 
 ### AI Integration
 - **Chat System:** LangChain-powered AI chat with AstraDB vector storage
-- **Context Awareness:** Portfolio-specific AI responses using embedded knowledge
+- **Vector Embeddings:** Generated from `src/lib/` files (.ts and .txt) via `pnpm generate` script
+- **Context Awareness:** Portfolio-specific AI responses using embedded knowledge  
 - **Real-time Chat:** Streaming responses via AI SDK integration
+- **Storage:** Uses @upstash/redis for session management
 
 ### Styling Approach
 - **Tailwind CSS:** Primary styling system with custom color scheme and variables
@@ -84,3 +91,17 @@ pnpm generate    # Run custom TypeScript generation scripts
 **Responsive Behavior:**
 - Layout uses custom CSS properties for stable responsive behavior during dynamic changes
 - Scrollbar gutter is stabilized to prevent layout shift during modal/dropdown interactions
+
+## Development Notes
+
+**Current Rebuild Status:**
+- Project is in active rebuild phase (branch: `rebuild`)  
+- Legacy components preserved in `(legacy-components)` folder
+- New layout structure uses `(with-layout)` route grouping
+- i18n routing may need verification after recent structural changes
+
+**Key Dependencies:**
+- Next.js 15.3.4 with Turbopack for development
+- Motion/react (not framer-motion) for animations
+- React 19.1.0 with latest features
+- TypeScript 5.8.3 for type safety

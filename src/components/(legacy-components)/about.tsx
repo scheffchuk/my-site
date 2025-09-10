@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./ui/section-heading";
+import SectionHeading from "../ui/section-heading";
 import { motion } from "motion/react";
 import { useSectionInView } from "@/lib/hooks";
 import { useTranslations } from "next-intl";
@@ -13,7 +13,7 @@ export default function About() {
   return (
     <motion.section
       ref={ref}
-      className="mb-28 max-w-[45rem] scroll-mt-16 text-center leading-8 sm:mb-40"
+      className="mb-28 max-w-180 scroll-mt-16 text-center leading-8 sm:mb-40"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.175 }}

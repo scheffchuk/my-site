@@ -20,7 +20,7 @@ export default function Intro() {
     <section
       ref={ref}
       id="home"
-      className="relative mb-28 max-w-[50rem] scroll-mt-[100rem] sm:mb-0"
+      className="relative mb-28 max-w-200 scroll-mt-400 sm:mb-0"
     >
       <div className="flex items-center justify-center">
         <div className="relative">
@@ -43,7 +43,7 @@ export default function Intro() {
         </div>
       </div>
 
-      <h1 className="mb-10 mt-4 text-pretty px-4 text-center text-xl font-medium !leading-[1.5] text-gray-900 dark:text-white/80 sm:px-0 sm:text-4xl">
+      <h1 className="mb-10 mt-4 text-pretty px-4 text-center text-xl font-medium leading-normal! text-gray-900 dark:text-white/80 sm:px-0 sm:text-4xl">
         <span className="font-semibold">{t("greeting")}</span>
         <span>{t("selfIntro")}</span>
       </h1>
@@ -52,7 +52,7 @@ export default function Intro() {
         <div className="flex flex-row gap-2">
           <Link
             href="#contact"
-            className="group flex items-center gap-2 rounded-full bg-gray-800 px-7 py-3 text-white outline-none transition hover:scale-105 hover:bg-gray-950 focus:scale-105 active:scale-105"
+            className="group flex items-center gap-2 rounded-full bg-gray-800 px-7 py-3 text-white outline-hidden transition hover:scale-105 hover:bg-gray-950 focus:scale-105 active:scale-105"
             onClick={() => {
               setActiveSection("Contact");
               setTimeOfLastClick(Date.now());

@@ -37,7 +37,7 @@ export default function Header() {
   };
 
   return (
-    <div className="fixed bottom-5 left-1/2 z-[999] max-w-full -translate-x-1/2 drop-shadow-md">
+    <div className="fixed bottom-5 left-1/2 z-999 max-w-full -translate-x-1/2 drop-shadow-md">
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
