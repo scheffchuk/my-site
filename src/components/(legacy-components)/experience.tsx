@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./ui/section-heading";
+import SectionHeading from "../ui/section-heading";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -80,8 +80,8 @@ export default function Experience() {
               }}
             >
               <h3 className="font-semibold capitalize">{item.title}</h3>
-              <p className="!mt-2 font-normal">{item.location}</p>
-              <p className="!mt-2 text-pretty !font-normal text-gray-700 dark:text-white/85">
+              <p className="mt-2! font-normal">{item.location}</p>
+              <p className="mt-2! text-pretty font-normal! text-gray-700 dark:text-white/85">
                 {item.description}
               </p>
             </VerticalTimelineElement>

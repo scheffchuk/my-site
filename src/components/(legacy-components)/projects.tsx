@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./ui/section-heading";
+import SectionHeading from "../ui/section-heading";
 import { projectsData, projectsDataJap } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { useLocale, useTranslations } from "next-intl";

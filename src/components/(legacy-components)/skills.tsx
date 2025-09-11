@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./ui/section-heading";
+import SectionHeading from "../ui/section-heading";
 import { skillsData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { motion } from "motion/react";
@@ -29,7 +29,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="mb-28 max-w-[53rem] scroll-mt-16 text-center sm:mb-40"
+      className="mb-28 max-w-212 scroll-mt-16 text-center sm:mb-40"
     >
       <SectionHeading>{t("title")}</SectionHeading>
       <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">

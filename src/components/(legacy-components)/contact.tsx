@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./ui/section-heading";
+import SectionHeading from "../ui/section-heading";
 import { motion } from "motion/react";
 import { useSectionInView } from "@/lib/hooks";
 import { sendEmail } from "@/actions/sendEmail";
-import SubmitBtn from "./ui/submit-btn";
+import SubmitBtn from "../ui/submit-btn";
 import toast from "react-hot-toast";
 import { useTranslations } from "next-intl";
 
@@ -57,7 +57,7 @@ export default function Contact() {
         }}
       >
         <input
-          className="borderBlack h-14 rounded-lg bg-white/50 px-4 transition-all dark:bg-white dark:bg-opacity-30 dark:outline-none dark:focus:bg-opacity-50"
+          className="borderBlack h-14 rounded-lg bg-white/50 px-4 transition-all dark:bg-white dark:bg-opacity-30 dark:outline-hidden dark:focus:bg-opacity-50"
           name="senderEmail"
           type="email"
           required
@@ -65,7 +65,7 @@ export default function Contact() {
           placeholder="Your email"
         />
         <textarea
-          className="borderBlack my-3 h-52 rounded-lg bg-white/50 p-4 transition-all dark:bg-white dark:bg-opacity-30 dark:outline-none dark:focus:bg-opacity-50"
+          className="borderBlack my-3 h-52 rounded-lg bg-white/50 p-4 transition-all dark:bg-white dark:bg-opacity-30 dark:outline-hidden dark:focus:bg-opacity-50"
           name="message"
           placeholder="Your message"
           required
