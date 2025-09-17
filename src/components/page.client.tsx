@@ -3,6 +3,7 @@
 import { Globe, Terminal } from "lucide-react";
 import { track } from "@vercel/analytics";
 import Link from "next/link";
+import { TextScramble } from "@/components/ui/text-scramble";
 
 interface ProjectProps {
   title: string;
@@ -21,7 +22,7 @@ const Project = ({
   return (
     <div className="px-4 pt-4 pb-5 flex flex-col gap-y-1">
       <h3 className="font-medium">{title}</h3>
-      <p>{description}</p>
+      <TextScramble as="p">{description}</TextScramble>
       <div className="flex items-center mt-2 gap-x-2">
         {live ? (
           <Link

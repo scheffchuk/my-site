@@ -12,6 +12,8 @@ import { Project } from "@/components/page.client";
 import TwitterXMotion from "@/components/twitter-x-loop";
 import NewFooter from "@/components/new-footer";
 import { ExperienceAccordion } from "@/components/experience-accordion";
+import { StayTextLoop } from "@/components/stay-loop";
+import { TextScramble } from "@/components/ui/text-scramble";
 
 export const dynamic = "force-static";
 
@@ -52,7 +54,7 @@ const Section = ({
   children: React.ReactNode;
 }) => {
   return (
-    <section className="divide-accent border-accent text-accent w-full grid-cols-[210px_650px_auto] border-b md:grid md:divide-x">
+    <section className="divide-accent border-accent text-accent w-full grid-cols-[180px_520px_auto] border-b md:grid md:divide-x">
       {title ? <SectionTitle>{title}</SectionTitle> : null}
       <SectionContent>{children}</SectionContent>
       <div></div>
@@ -113,18 +115,18 @@ export default function Home() {
         </nav>
 
         <Section title=" ">
-          <div className="col-start-2 px-4 pb-6 text-pretty md:pt-16">
-            <h1 className="flex items-center text-3xl font-extrabold">
+          <div className="col-start-2 px-4 pb-6 md:pt-16">
+            <TextScramble as="h1" className="flex items-center text-3xl font-extrabold">
               Scheff Chuk
-            </h1>
-            <span>
-              Learning full-stack development by building sites and apps. Work
-              mainly with React and Next.js.
-            </span>
-            <span className="mt-8 block text-lg font-medium tracking-tight">
+            </TextScramble>
+            <TextScramble as="span">
+              Learning full-stack development by building sites and apps. Always trying out new thing.
+            </TextScramble>
+            <StayTextLoop/>
+            <TextScramble as="span" className="mt-8 block text-lg font-medium tracking-tight">
               About Me
-            </span>
-            <p className="mt-4 text-sm">
+            </TextScramble>
+            <TextScramble as="p" className="text-sm">
               {/* I'm a creative{" "}
               <LinkPrimitive
                 href="https://www.youtube.com/watch?v=jG7dSXcfVqE"
@@ -134,13 +136,13 @@ export default function Home() {
               </LinkPrimitive> */}
               I am from Guangzhou in southern China, married. I don't smoke. I
               drink moderately.
-            </p>
-            <p className="mt-2 pb-6 text-sm">
+            </TextScramble>
+            <TextScramble as="p" className="mt-1 pb-4 text-sm">
               My bedtime varies, but I sleep seven hours nightly. Before sleep,
               I drink cold milk and read for twenty minutes. I sleep soundly
-              until morning. I wake refreshed, like a child. My health
+              until morning. My health
               examinations show nothing wrong.
-            </p>
+            </TextScramble>
             {/* <MusicPlayer /> */}
             {/* <div className="flex">
               <Link
@@ -169,7 +171,7 @@ export default function Home() {
         <Section title="Projects">
           <Project
             title="My site"
-            description="My portfolio website. It serves as a playground for me to try out various techs, including multilingual support, dark mode, animations, and an AI chatbot."
+            description="My portfolio website. It serves as a playground for me to try out various techs, currently going through redesign."
             hrefs={{
               code: "https://github.com/scheffchuk/scheff-portfolio-nextjs",
             }}
@@ -186,15 +188,15 @@ export default function Home() {
           <DottedSpacer className="my-0" />
           <Project
             title="HeadSalon"
-            description="I built this blog web app for my favorite writer, WhigZhou, with a focus on a clean, beautiful design, exceptional speed, and a smooth user experience. It also includes a variety of  “nice-to-have” features."
+            description="I built this blog web app for my favorite writer, WhigZhou, with a focus on a clean design, exceptional speed, and a smooth user experience."
             hrefs={{
               live: "https://headsalon.vercel.app/",
               code: "https://github.com/scheffchuk/headsalon",
             }}
           />
         </Section>
-        <Section title="Contact">
-          <p className="p-4">Where you can find me</p>
+        <Section title="Social">
+          <TextScramble as="p" className="p-4">Where you can find me</TextScramble>
           <DottedSpacer lines={2} />
           <div className="grid gap-x-4 divide-y divide-dotted border-y border-dotted">
             <div className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 px-4 py-2">
@@ -224,7 +226,7 @@ export default function Home() {
               scheffchuk
             </SocialLink>
           </div>
-          <DottedSpacer lines={2} />
+          <DottedSpacer lines={3} />
         </Section>
 
         {/* <Footer /> */}
