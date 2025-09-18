@@ -13,7 +13,13 @@ import TwitterXMotion from "@/components/twitter-x-loop";
 import NewFooter from "@/components/new-footer";
 import { ExperienceAccordion } from "@/components/experience-accordion";
 import { StayTextLoop } from "@/components/stay-loop";
-import { TextScramble } from "@/components/ui/text-scramble";
+import ScrambleIn from "@/components/fancy/text/scramble-in";
+import {
+  getAnimationDuration,
+  ROW_DELAY,
+  SCRAMBLE_SPEED,
+  SCRAMBLED_LETTER_COUNT,
+} from "@/lib/utils";
 
 export const dynamic = "force-static";
 
@@ -116,33 +122,47 @@ export default function Home() {
 
         <Section title=" ">
           <div className="col-start-2 px-4 pb-6 md:pt-16">
-            <TextScramble as="h1" className="flex items-center text-3xl font-extrabold">
-              Scheff Chuk
-            </TextScramble>
-            <TextScramble as="span">
-              Learning full-stack development by building sites and apps. Always trying out new thing.
-            </TextScramble>
-            <StayTextLoop/>
-            <TextScramble as="span" className="mt-8 block text-lg font-medium tracking-tight">
-              About Me
-            </TextScramble>
-            <TextScramble as="p" className="text-sm">
-              {/* I'm a creative{" "}
-              <LinkPrimitive
-                href="https://www.youtube.com/watch?v=jG7dSXcfVqE"
-                external
-              >
-                doing what I can't
-              </LinkPrimitive> */}
-              I am from Guangzhou in southern China, married. I don't smoke. I
-              drink moderately.
-            </TextScramble>
-            <TextScramble as="p" className="mt-1 pb-4 text-sm">
-              My bedtime varies, but I sleep seven hours nightly. Before sleep,
-              I drink cold milk and read for twenty minutes. I sleep soundly
-              until morning. My health
-              examinations show nothing wrong.
-            </TextScramble>
+            <h1 className="flex items-center text-3xl font-extrabold">
+              <ScrambleIn
+                text="Scheff Chuk"
+                delay={0}
+                scrambleSpeed={SCRAMBLE_SPEED}
+                scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+              />
+            </h1>
+            <div className="block">
+              <ScrambleIn
+                text="Learning full-stack development by building sites and apps. Always trying out new thing."
+                delay={getAnimationDuration("Scheff Chuk")}
+                scrambleSpeed={SCRAMBLE_SPEED}
+                scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+              />
+            </div>
+            <StayTextLoop />
+            <span className="mt-8 block text-lg font-medium tracking-tight">
+              <ScrambleIn
+                text="About Me"
+                delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY}
+                scrambleSpeed={SCRAMBLE_SPEED}
+                scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+              />
+            </span>
+            <p className="text-sm">
+              <ScrambleIn
+                text="I am from Guangzhou in southern China, married. I don't smoke. I drink moderately."
+                delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 2}
+                scrambleSpeed={SCRAMBLE_SPEED}
+                scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+              />
+            </p>
+            <p className="mt-1 pb-4 text-sm">
+              <ScrambleIn
+                text="My bedtime varies, but I sleep seven hours nightly. I sleep soundly until morning. My health examinations show nothing wrong."
+                delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 3}
+                scrambleSpeed={SCRAMBLE_SPEED}
+                scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+              />
+            </p>
             {/* <MusicPlayer /> */}
             {/* <div className="flex">
               <Link
@@ -172,6 +192,7 @@ export default function Home() {
           <Project
             title="My site"
             description="My portfolio website. It serves as a playground for me to try out various techs, currently going through redesign."
+            delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 7}
             hrefs={{
               code: "https://github.com/scheffchuk/scheff-portfolio-nextjs",
             }}
@@ -180,6 +201,7 @@ export default function Home() {
           <Project
             title="Japan Demographic Chart App"
             description="This app was developed as a coding test submission, and regardless of the interview outcome, I learned a great deal and received valuable feedback."
+            delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 9}
             hrefs={{
               live: "https://population-trends-japan-nextjs.vercel.app",
               code: "https://github.com/scheffchuk/japan-population-trends-nextjs",
@@ -189,6 +211,7 @@ export default function Home() {
           <Project
             title="HeadSalon"
             description="I built this blog web app for my favorite writer, WhigZhou, with a focus on a clean design, exceptional speed, and a smooth user experience."
+            delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 11}
             hrefs={{
               live: "https://headsalon.vercel.app/",
               code: "https://github.com/scheffchuk/headsalon",
@@ -196,7 +219,14 @@ export default function Home() {
           />
         </Section>
         <Section title="Social">
-          <TextScramble as="p" className="p-4">Where you can find me</TextScramble>
+          <p className="px-4">
+            <ScrambleIn
+              text="Where you can find me"
+              delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 15}
+              scrambleSpeed={SCRAMBLE_SPEED}
+              scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+            />
+          </p>
           <DottedSpacer lines={2} />
           <div className="grid gap-x-4 divide-y divide-dotted border-y border-dotted">
             <div className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 px-4 py-2">
