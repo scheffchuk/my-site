@@ -41,7 +41,7 @@ export function ExperienceAccordion() {
           </div>
         </AccordionTrigger>
         <AccordionContent className="bg-accent/10 px-4">
-          <p className="text-accent pb-4">
+          <p className="text-accent px-3 pb-4">
             Primarily handled SNS marketing, including event planning and
             collaboration with designers, covering a wide range of
             responsibilities. Also worked as a freelance translator and English
@@ -60,7 +60,7 @@ export function ExperienceAccordion() {
           </div>
         </AccordionTrigger>
         <AccordionContent className="bg-accent/10 px-4">
-          <p className="text-accent pb-4">
+          <p className="text-accent px-3 pb-4">
             Helping with the family restaurant business while majoring in
             English at university. Develop English skills, gain an international
             perspective, and appreciate diverse values.

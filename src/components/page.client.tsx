@@ -3,11 +3,17 @@
 import { Globe, Terminal } from "lucide-react";
 import { track } from "@vercel/analytics";
 import Link from "next/link";
-import { TextScramble } from "@/components/ui/text-scramble";
+import ScrambleIn from "@/components/fancy/text/scramble-in";
+import {
+  getAnimationDuration,
+  SCRAMBLE_SPEED,
+  SCRAMBLED_LETTER_COUNT,
+} from "@/lib/utils";
 
 interface ProjectProps {
   title: string;
   description: string;
+  delay?: number;
   hrefs: {
     live?: string;
     code?: string;
@@ -17,12 +23,27 @@ interface ProjectProps {
 const Project = ({
   title,
   description,
+  delay = 0,
   hrefs: { live, code },
 }: ProjectProps) => {
   return (
     <div className="px-4 pt-4 pb-5 flex flex-col gap-y-1">
-      <h3 className="font-medium">{title}</h3>
-      <TextScramble as="p">{description}</TextScramble>
+      <h3 className="font-medium">
+        <ScrambleIn
+          text={title}
+          delay={delay}
+          scrambleSpeed={SCRAMBLE_SPEED}
+          scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+        />
+      </h3>
+      <p>
+        <ScrambleIn
+          text={description}
+          delay={delay + getAnimationDuration(title)}
+          scrambleSpeed={SCRAMBLE_SPEED}
+          scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+        />
+      </p>
       <div className="flex items-center mt-2 gap-x-2">
         {live ? (
           <Link

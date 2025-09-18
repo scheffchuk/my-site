@@ -55,6 +55,7 @@ export function TextScramble({
   const [isAnimating, setIsAnimating] = useState(false);
   const text = children;
 
+
   const scramble = async () => {
     if (isAnimating) return;
     setIsAnimating(true);
@@ -86,6 +87,7 @@ export function TextScramble({
     }, speed * 1000);
   };
 
+
   useEffect(() => {
     if (!trigger) return;
 
@@ -97,6 +99,7 @@ export function TextScramble({
       className={className}
       style={{
         fontVariantNumeric: 'tabular-nums',
+        fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace',
         whiteSpace: 'pre-wrap',
         wordBreak: 'keep-all',
         overflowWrap: 'normal'

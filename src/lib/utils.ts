@@ -44,3 +44,11 @@ export function formatDate(input: string | number): string {
 export function absoluteUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
 }
+
+export const ROW_DELAY = 30;
+export const SCRAMBLE_SPEED = 15;
+export const SCRAMBLED_LETTER_COUNT = 5;
+
+export const getAnimationDuration = (text: string) => {
+  return Math.min((text.length - SCRAMBLED_LETTER_COUNT) * SCRAMBLE_SPEED, 100);
+};
