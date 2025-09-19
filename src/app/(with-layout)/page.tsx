@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { PenTool } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   CopyEmailButton,
   CopyEmailButtonAlt,
@@ -20,6 +21,7 @@ import {
   SCRAMBLE_SPEED,
   SCRAMBLED_LETTER_COUNT,
 } from "@/lib/utils";
+import { Particles } from "@/components/ui/particles";
 
 export const dynamic = "force-static";
 
@@ -84,7 +86,7 @@ const SocialLink = ({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="underline-offset-2 hover:underline"
+        className="rounded-sm underline-offset-2 transition duration-200 select-none hover:underline focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] focus-visible:outline-none"
       >
         {children}
       </Link>
@@ -100,6 +102,12 @@ export default function Home() {
   return (
     <>
       {/* <Shader /> */}
+      <Particles
+        className="absolute inset-0"
+        quantity={150}
+        ease={80}
+        refresh
+      />
       <div className="animate-in fade-in selection:bg-accent/10 flex-col justify-between duration-500 md:flex">
         <nav className="top-5 right-5 flex gap-1 max-md:p-4 md:absolute">
           {/* <Link
@@ -231,17 +239,23 @@ export default function Home() {
           <div className="grid gap-x-4 divide-y divide-dotted border-y border-dotted">
             <div className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 px-4 py-2">
               <p className="font-medium">Mail</p>
-              <Link href="mailto:darthusian@gmail.com">
+              <Link
+                href="mailto:darthusian@gmail.com"
+                className="rounded-sm underline-offset-2 transition duration-200 select-none hover:underline focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] focus-visible:outline-none"
+              >
                 darthusian@gmail.com
               </Link>
               <div className="ml-auto flex gap-x-1">
-                <Link
-                  href="mailto:darthusian@gmail.com"
-                  className="hover:bg-accent/80 bg-accent text-primary-foreground hidden w-fit cursor-pointer items-center gap-x-1.5 rounded-xs py-0.5 pr-1.5 pl-1 text-sm transition md:flex"
+                <Button
+                  asChild
+                  size={null}
+                  className="hover:bg-accent/80 bg-accent text-primary-foreground hidden w-fit cursor-pointer items-center gap-x-1.5 rounded-xs py-0.5 pr-1.5 pl-1 text-sm transition duration-200 select-none focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] focus-visible:outline-none active:scale-[0.96] md:flex"
                 >
-                  <PenTool size={12} aria-hidden={true} />
-                  Compose
-                </Link>
+                  <Link href="mailto:darthusian@gmail.com">
+                    <PenTool size={12} aria-hidden={true} />
+                    Compose
+                  </Link>
+                </Button>
                 <CopyEmailButton />
               </div>
             </div>

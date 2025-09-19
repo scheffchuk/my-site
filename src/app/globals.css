@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -175,13 +180,29 @@
     /* font-size: 14px; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: geometricPrecision;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
   }
 
   /* Enhance touch interactions */
   a,
   button {
     touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    user-select: none; /* Disable text selection for interactive elements */
+  }
+
+  /* Hover states should not be visible on touch devices */
+  @media (hover: hover) {
+    .hover-only\:hover\:scale-\[1\.02\]:hover {
+      transform: scale(1.02);
+    }
+    .hover-only\:hover\:text-\[\#3399ff\]:hover {
+      color: #3399ff;
+    }
+    .hover-only\:hover\:text-yellow-300:hover {
+      color: rgb(253 224 71);
+    }
   }
 }
 

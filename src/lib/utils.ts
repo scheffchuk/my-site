@@ -46,8 +46,8 @@ export function absoluteUrl(path: string) {
 }
 
 export const ROW_DELAY = 30;
-export const SCRAMBLE_SPEED = 15;
-export const SCRAMBLED_LETTER_COUNT = 5;
+export const SCRAMBLE_SPEED = 25;
+export const SCRAMBLED_LETTER_COUNT = 4;
 
 export const getAnimationDuration = (text: string) => {
   return Math.min((text.length - SCRAMBLED_LETTER_COUNT) * SCRAMBLE_SPEED, 100);

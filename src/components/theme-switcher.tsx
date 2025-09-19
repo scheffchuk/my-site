@@ -2,6 +2,7 @@
 
 import { PaintRoller } from "lucide-react";
 import { useTheme } from "next-themes";
+import { Button } from "./ui/button";
 
 const ThemeChanger = () => {
   const { theme, setTheme } = useTheme();
@@ -15,7 +16,7 @@ const ThemeChanger = () => {
 
   return (
     <div>
-      <button
+      <Button
         type="button"
         onClick={toggleTheme}
         className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 transition text-primary-foreground py-0.5 px-1.5 rounded-xs cursor-pointer h-full"
@@ -26,7 +27,7 @@ const ThemeChanger = () => {
           size={12}
           aria-hidden={true}
         />
-      </button>
+      </Button>
     </div>
   );
 };
