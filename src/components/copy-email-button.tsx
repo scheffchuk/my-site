@@ -15,19 +15,29 @@ const motionVariants: Variants = {
 export const CopyEmailButton = () => {
   // const [play] = useSound("/sounds/copy.mp3");
   const [copied, setCopied] = useState(false);
-  const handleCopy = (text: string) => {
+  const [isDisabled, setIsDisabled] = useState(false);
+  const handleCopy = async (text: string) => {
+    if (isDisabled) return;
+    setIsDisabled(true);
     // play();
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000);
-    navigator.clipboard.writeText(text);
-    setCopied(true);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+        setIsDisabled(false);
+      }, 2000);
+    } catch {
+      setIsDisabled(false);
+    }
   };
   return (
     <button
       type="button"
       onClick={() => handleCopy("darthusian@gmail.com")}
-      className="bg-accent hover:bg-accent/80 transition text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs cursor-pointer text-sm w-[56px]"
+      disabled={isDisabled}
+      className="bg-accent hover:bg-accent/80 text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs cursor-pointer text-sm w-[56px] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] active:scale-[0.96] transition-all duration-200 select-none"
+      aria-label={copied ? "Email copied to clipboard" : "Copy email to clipboard"}
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
@@ -56,20 +66,30 @@ export const CopyEmailButton = () => {
 export const CopyEmailButtonAlt = () => {
   // const [play] = useSound("/sounds/copy.mp3");
   const [copied, setCopied] = useState(false);
-  const handleCopy = (text: string) => {
+  const [isDisabled, setIsDisabled] = useState(false);
+  const handleCopy = async (text: string) => {
+    if (isDisabled) return;
+    setIsDisabled(true);
     // play();
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000);
-    navigator.clipboard.writeText(text);
-    setCopied(true);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+        setIsDisabled(false);
+      }, 2000);
+    } catch {
+      setIsDisabled(false);
+    }
   };
 
   return (
     <button
       type="button"
-      className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 transition text-primary-foreground py-0.5 pl-1.5 pr-1.5 rounded-xs cursor-pointer"
+      className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 text-primary-foreground py-0.5 pl-1.5 pr-1.5 rounded-xs cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] active:scale-[0.96] transition-all duration-200 select-none"
       onClick={() => handleCopy("darthusian@gmail.com")}
+      disabled={isDisabled}
+      aria-label={copied ? "Email copied to clipboard" : "Copy email to clipboard"}
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.div

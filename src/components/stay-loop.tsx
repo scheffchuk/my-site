@@ -1,38 +1,23 @@
-import { TextLoop } from '@/components/ui/text-loop';
+import Typewriter from "./fancy/text/typewriter";
 
 export function StayTextLoop() {
   return (
-    <div className='block mt-8 whitespace-pre-wrap text-base font-medium'>
-      Stay{' '}
-      <TextLoop
-        className='overflow-y-clip'
-        variants={{
-          initial: {
-            y: 20,
-            rotateX: 90,
-            opacity: 0,
-            filter: 'blur(2px)',
-          },
-          animate: {
-            y: 0,
-            rotateX: 0,
-            opacity: 1,
-            filter: 'blur(0px)',
-          },
-          exit: {
-            y: -20,
-            rotateX: -90,
-            opacity: 0,
-            filter: 'blur(2px)',
-          },
-        }}
-      >
-        <span>hungry</span>
-        <span>foolish</span>
-        <span>creative</span>
-        <span>innovative</span>
-        <span>healthy</span>
-      </TextLoop>
+    <div className="mt-8 block text-base font-medium whitespace-pre-wrap">
+      <span>{"Stay "}</span>
+      <Typewriter
+          text={[
+            "hungry",
+            "foolish",
+            "creative",
+            "innovative",
+            "healthy",
+          ]}
+          speed={70}
+          className="text-accent text-pretty"
+          waitTime={1500}
+          deleteSpeed={40}
+          cursorChar={"_"}
+        />
     </div>
   );
 }

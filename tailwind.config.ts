@@ -37,6 +37,9 @@ const config: Config = {
   plugins: [
     require('tailwindcss-animate'),
     require('tailwindcss-scrollbar'),
+    function({ addVariant }: { addVariant: (name: string, selector: string) => void }) {
+      addVariant('hover-only', '@media (hover: hover)')
+    }
   ],
 }
 
