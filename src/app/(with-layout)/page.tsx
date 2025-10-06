@@ -3,10 +3,7 @@ import Link from "next/link";
 import { PenTool } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import {
-  CopyEmailButton,
-  CopyEmailButtonAlt,
-} from "@/components/copy-email-button";
+import { CopyEmailButton } from "@/components/copy-email-button";
 import ThemeChanger from "@/components/theme-switcher";
 
 import { Project } from "@/components/page.client";
