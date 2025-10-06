@@ -3,10 +3,7 @@ import Link from "next/link";
 import { PenTool } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import {
-  CopyEmailButton,
-  CopyEmailButtonAlt,
-} from "@/components/copy-email-button";
+import { CopyEmailButton } from "@/components/copy-email-button";
 import ThemeChanger from "@/components/theme-switcher";
 
 import { Project } from "@/components/page.client";
@@ -21,7 +18,6 @@ import {
   SCRAMBLE_SPEED,
   SCRAMBLED_LETTER_COUNT,
 } from "@/lib/utils";
-import { Particles } from "@/components/ui/particles";
 
 export const dynamic = "force-static";
 
@@ -101,13 +97,6 @@ const SectionContent = ({ children }: { children: React.ReactNode }) => {
 export default function Home() {
   return (
     <>
-      {/* <Shader /> */}
-      <Particles
-        className="absolute inset-0"
-        quantity={150}
-        ease={80}
-        refresh
-      />
       <div className="animate-in fade-in selection:bg-accent/10 flex-col justify-between duration-500 md:flex">
         <nav className="top-5 right-5 flex gap-1 max-md:p-4 md:absolute">
           {/* <Link
@@ -124,7 +113,7 @@ export default function Home() {
           >
             Guestbook
           </Link> */}
-          <CopyEmailButtonAlt />
+          {/* <CopyEmailButtonAlt /> */}
           <ThemeChanger />
         </nav>
 
