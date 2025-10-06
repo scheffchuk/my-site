@@ -191,19 +191,6 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none; /* Disable text selection for interactive elements */
   }
-
-  /* Hover states should not be visible on touch devices */
-  @media (hover: hover) {
-    .hover-only\:hover\:scale-\[1\.02\]:hover {
-      transform: scale(1.02);
-    }
-    .hover-only\:hover\:text-\[\#3399ff\]:hover {
-      color: #3399ff;
-    }
-    .hover-only\:hover\:text-yellow-300:hover {
-      color: rgb(253 224 71);
-    }
-  }
 }
 
 /* =============================================================================

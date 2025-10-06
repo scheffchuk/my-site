@@ -19,7 +19,7 @@ const ThemeChanger = () => {
       <Button
         type="button"
         onClick={toggleTheme}
-        className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 transition text-primary-foreground py-0.5 px-1.5 rounded-xs cursor-pointer h-full"
+        className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 transition text-primary-foreground py-1 px-1 rounded-xs cursor-pointer h-full"
         aria-label="Change theme"
       >
         <PaintRoller
