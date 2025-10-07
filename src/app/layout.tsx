@@ -22,7 +22,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth!" suppressHydrationWarning>
-      <body className={cn(geist.className)}>
+      <body className={cn(geist.className, "max-w-2xl mx-auto")}>
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="blue"

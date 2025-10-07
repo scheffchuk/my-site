@@ -27,7 +27,7 @@ const Project = ({
   hrefs: { live, code },
 }: ProjectProps) => {
   return (
-    <div className="px-4 pt-4 pb-5 flex flex-col gap-y-1">
+    <div className="px-2 pt-4 pb-5 flex flex-col gap-y-1 hover:bg-accent/10">
       <h3 className="font-medium">
         <ScrambleIn
           text={title}

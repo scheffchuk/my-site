@@ -44,7 +44,7 @@ const DottedSpacer = ({
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h2 className="h-full pt-4 pl-4 text-lg font-medium md:ml-auto md:py-4 md:pr-4">
+    <h2 className="h-full pt-4 text-lg font-medium md:py-4 md:pr-4">
       {children}
     </h2>
   );
@@ -58,7 +58,7 @@ const Section = ({
   children: React.ReactNode;
 }) => {
   return (
-    <section className="divide-accent border-accent text-accent w-full grid-cols-[180px_520px_auto] border-b md:grid md:divide-x">
+    <section className="border-accent text-accent w-full flex flex-col">
       {title ? <SectionTitle>{title}</SectionTitle> : null}
       <SectionContent>{children}</SectionContent>
       <div></div>
@@ -76,7 +76,7 @@ const SocialLink = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="grid grid-cols-[75px_auto_auto] items-center gap-x-1 px-4 py-2">
+    <div className="grid grid-cols-[75px_auto_auto] items-center gap-x-1  py-2">
       <p className="font-medium">{social}</p>
       <Link
         href={href}
@@ -91,14 +91,14 @@ const SocialLink = ({
 };
 
 const SectionContent = ({ children }: { children: React.ReactNode }) => {
-  return <div className="md:border-r">{children}</div>;
+  return <div>{children}</div>;
 };
 
 export default function Home() {
   return (
     <>
       <div className="animate-in fade-in selection:bg-accent/10 flex-col justify-between duration-500 md:flex">
-        <nav className="top-5 right-5 flex gap-1 max-md:p-4 md:absolute">
+        <nav className="top-5 right-0 flex gap-1 max-md:p-4 md:absolute">
           {/* <Link
             href="/"
             target="_blank"
@@ -118,7 +118,7 @@ export default function Home() {
         </nav>
 
         <Section title=" ">
-          <div className="col-start-2 px-4 pb-6 md:pt-16">
+          <div className="col-start-2 pb-6 md:pt-16">
             <h1 className="flex items-center text-3xl font-extrabold">
               <ScrambleIn
                 text="Scheff Chuk"
@@ -181,9 +181,7 @@ export default function Home() {
           </div>
         </Section>
         <Section title="Past">
-          <DottedSpacer className="mt-4 mb-0 md:mt-0.5" />
           <ExperienceAccordion />
-          <DottedSpacer lines={3} />
         </Section>
         <Section title="Projects">
           <Project
@@ -216,7 +214,7 @@ export default function Home() {
           />
         </Section>
         <Section title="Social">
-          <p className="px-4">
+          <p className="">
             <ScrambleIn
               text="Where you can find me"
               delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 15}
@@ -225,8 +223,8 @@ export default function Home() {
             />
           </p>
           <DottedSpacer lines={2} />
-          <div className="grid gap-x-4 divide-y divide-dotted border-y border-dotted">
-            <div className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 px-4 py-2">
+          <div className="grid gap-x-4">
+            <div className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 py-2">
               <p className="font-medium">Mail</p>
               <Link
                 href="mailto:darthusian@gmail.com"
@@ -248,7 +246,7 @@ export default function Home() {
                 <CopyEmailButton />
               </div>
             </div>
-            <TwitterXMotion className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 overflow-hidden px-4 py-2" />
+            <TwitterXMotion className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 overflow-hidden  py-2" />
             <SocialLink
               social="Ins"
               href="https://www.instagram.com/scheff.d.chuk"
