@@ -98,7 +98,7 @@ export default function Home() {
   return (
     <>
       <div className="animate-in fade-in selection:bg-accent/10 flex-col justify-between duration-500 md:flex">
-        <nav className="top-5 right-0 flex gap-1 max-md:p-4 md:absolute">
+        <nav className="top-5 right-0 flex gap-1 max-md:py-4 md:absolute">
           {/* <Link
             href="/"
             target="_blank"
@@ -214,7 +214,7 @@ export default function Home() {
           />
         </Section>
         <Section title="Social">
-          <p className="">
+          <p className="px-2">
             <ScrambleIn
               text="Where you can find me"
               delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 15}
@@ -222,8 +222,8 @@ export default function Home() {
               scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
             />
           </p>
-          <DottedSpacer lines={2} />
-          <div className="grid gap-x-4">
+          <DottedSpacer lines={3} />
+          <div className="grid gap-x-4 px-2">
             <div className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 py-2">
               <p className="font-medium">Mail</p>
               <Link
