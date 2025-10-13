@@ -58,7 +58,7 @@ const Section = ({
   children: React.ReactNode;
 }) => {
   return (
-    <section className="gap-y-4border-accent text-accent flex w-full flex-col">
+    <section className="gap-y-2 border-accent text-accent flex w-full flex-col">
       {title ? <SectionTitle>{title}</SectionTitle> : null}
       <SectionContent>{children}</SectionContent>
       <div></div>
@@ -97,7 +97,7 @@ const SectionContent = ({ children }: { children: React.ReactNode }) => {
 export default function Home() {
   return (
     <>
-      <div className="selection:bg-accent/10 flex flex-col justify-between gap-y-8 md:flex">
+      <div className="selection:bg-accent/10 flex flex-col justify-between gap-y-6 md:pt-10">
         <nav className="top-5 right-0 flex gap-1 max-md:py-4 md:absolute">
           {/* <Link
             href="/"
@@ -118,24 +118,26 @@ export default function Home() {
         </nav>
 
         <Section title=" ">
-          <div className="md:pt-10">
-            <h1 className="text-3xl">
+          <div className="flex flex-col gap-y-2">
+            <h1 className="text-3xl font-semibold">
               <ScrambleIn
                 text="Scheff Chuk"
                 delay={0}
                 scrambleSpeed={SCRAMBLE_SPEED}
                 scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
-                className="font-semibold"
               />
+            </h1>
+            <p className="text-lg">
               <ScrambleIn
                 text="is learning to be a good full-stack developer. Always trying out new things."
                 delay={getAnimationDuration("Scheff Chuk")}
                 scrambleSpeed={SCRAMBLE_SPEED}
                 scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
-                className="text-lg"
               />
-            </h1>
-            <StayTextLoop />
+            </p>
+            <div className="pt-10">
+              <StayTextLoop />
+            </div>
             {/* <p className="text-lg">
               <ScrambleIn
                 text="I am from Guangzhou in southern China, married. I don't smoke. I drink moderately."
