@@ -44,7 +44,7 @@ const DottedSpacer = ({
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h2 className="h-full pt-4 text-lg font-medium md:py-4 md:pr-4">
+    <h2 className="h-full pt-4 text-xl font-semibold md:py-4 md:pr-4">
       {children}
     </h2>
   );
@@ -58,7 +58,7 @@ const Section = ({
   children: React.ReactNode;
 }) => {
   return (
-    <section className="border-accent text-accent w-full flex flex-col">
+    <section className="gap-y-4border-accent text-accent flex w-full flex-col">
       {title ? <SectionTitle>{title}</SectionTitle> : null}
       <SectionContent>{children}</SectionContent>
       <div></div>
@@ -76,7 +76,7 @@ const SocialLink = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="grid grid-cols-[75px_auto_auto] items-center gap-x-1  py-2">
+    <div className="grid grid-cols-[75px_auto_auto] items-center gap-x-1 py-2">
       <p className="font-medium">{social}</p>
       <Link
         href={href}
@@ -97,7 +97,7 @@ const SectionContent = ({ children }: { children: React.ReactNode }) => {
 export default function Home() {
   return (
     <>
-      <div className="animate-in fade-in selection:bg-accent/10 flex-col justify-between duration-500 md:flex">
+      <div className="selection:bg-accent/10 flex flex-col justify-between gap-y-8 md:flex">
         <nav className="top-5 right-0 flex gap-1 max-md:py-4 md:absolute">
           {/* <Link
             href="/"
@@ -118,48 +118,33 @@ export default function Home() {
         </nav>
 
         <Section title=" ">
-          <div className="col-start-2 pb-6 md:pt-16">
-            <h1 className="flex items-center text-3xl font-extrabold">
+          <div className="md:pt-10">
+            <h1 className="text-3xl">
               <ScrambleIn
                 text="Scheff Chuk"
                 delay={0}
                 scrambleSpeed={SCRAMBLE_SPEED}
                 scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+                className="font-semibold"
               />
-            </h1>
-            <div className="block">
               <ScrambleIn
-                text="Learning full-stack development by building sites and apps. Always trying out new thing."
+                text="is learning to be a good full-stack developer. Always trying out new things."
                 delay={getAnimationDuration("Scheff Chuk")}
                 scrambleSpeed={SCRAMBLE_SPEED}
                 scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
+                className="text-lg"
               />
-            </div>
+            </h1>
             <StayTextLoop />
-            <span className="mt-8 block text-lg font-medium tracking-tight">
-              <ScrambleIn
-                text="About Me"
-                delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY}
-                scrambleSpeed={SCRAMBLE_SPEED}
-                scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
-              />
-            </span>
-            <p className="text-sm">
+            {/* <p className="text-lg">
               <ScrambleIn
                 text="I am from Guangzhou in southern China, married. I don't smoke. I drink moderately."
                 delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 2}
                 scrambleSpeed={SCRAMBLE_SPEED}
                 scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
               />
-            </p>
-            <p className="mt-1 pb-4 text-sm">
-              <ScrambleIn
-                text="My bedtime varies, but I sleep seven hours nightly. I sleep soundly until morning. My health examinations show nothing wrong."
-                delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 3}
-                scrambleSpeed={SCRAMBLE_SPEED}
-                scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
-              />
-            </p>
+            </p> */}
+
             {/* <MusicPlayer /> */}
             {/* <div className="flex">
               <Link
@@ -192,17 +177,7 @@ export default function Home() {
               code: "https://github.com/scheffchuk/scheff-portfolio-nextjs",
             }}
           />
-          <DottedSpacer className="my-0" />
-          <Project
-            title="Japan Demographic Chart App"
-            description="This app was developed as a coding test submission, and regardless of the interview outcome, I learned a great deal and received valuable feedback."
-            delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 9}
-            hrefs={{
-              live: "https://population-trends-japan-nextjs.vercel.app",
-              code: "https://github.com/scheffchuk/japan-population-trends-nextjs",
-            }}
-          />
-          <DottedSpacer className="my-0" />
+
           <Project
             title="HeadSalon"
             description="I built this blog web app for my favorite writer, WhigZhou, with a focus on a clean design, exceptional speed, and a smooth user experience."
@@ -213,17 +188,9 @@ export default function Home() {
             }}
           />
         </Section>
-        <Section title="Social">
-          <p className="px-2">
-            <ScrambleIn
-              text="Where you can find me"
-              delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 15}
-              scrambleSpeed={SCRAMBLE_SPEED}
-              scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
-            />
-          </p>
+        <Section title="Where you can find me">
           <DottedSpacer lines={3} />
-          <div className="grid gap-x-4 px-2">
+          <div className="space-y-2">
             <div className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 py-2">
               <p className="font-medium">Mail</p>
               <Link
@@ -246,7 +213,7 @@ export default function Home() {
                 <CopyEmailButton />
               </div>
             </div>
-            <TwitterXMotion className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 overflow-hidden  py-2" />
+            <TwitterXMotion className="grid grid-cols-[75px_auto_1fr] items-center gap-x-1.5 overflow-hidden py-2" />
             <SocialLink
               social="Ins"
               href="https://www.instagram.com/scheff.d.chuk"

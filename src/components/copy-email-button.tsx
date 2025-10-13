@@ -36,7 +36,7 @@ export const CopyEmailButton = () => {
       type="button"
       onClick={() => handleCopy("darthusian@gmail.com")}
       disabled={isDisabled}
-      className="bg-accent hover:bg-accent/80 text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs cursor-pointer text-sm w-[56px] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] active:scale-[0.96] transition-all duration-200 select-none"
+      className="bg-accent hover:bg-accent/80 text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs cursor-pointer text-sm w-[70px] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] active:scale-[0.96] transition-all duration-200 select-none"
       aria-label={copied ? "Email copied to clipboard" : "Copy email to clipboard"}
     >
       <AnimatePresence mode="wait" initial={false}>

@@ -19,7 +19,7 @@ export function ExperienceAccordion() {
               <ChevronUp className="h-4 w-4 transition duration-150 group-data-[expanded]:-rotate-180" />
               <div>Life in Japan</div>
             </div>
-            <span>2023 - Present</span>
+            <span className="hidden md:block">2023 - Present</span>
           </div>
         </AccordionTrigger>
         <AccordionContent className="bg-accent/10">
@@ -37,7 +37,7 @@ export function ExperienceAccordion() {
               <ChevronUp className="h-4 w-4 transition duration-150 group-data-[expanded]:-rotate-180" />
               <div>Marketing, Translator</div>
             </div>
-            <span>2019 - 2022</span>
+            <span className="hidden md:block">2019 - 2022</span>
           </div>
         </AccordionTrigger>
         <AccordionContent className="bg-accent/10">
@@ -56,7 +56,7 @@ export function ExperienceAccordion() {
               <ChevronUp className="h-4 w-4 transition duration-150 group-data-[expanded]:-rotate-180" />
               <div>English Major, Family Business</div>
             </div>
-            <span>2015 - 2019</span>
+            <span className="hidden md:block">2015 - 2019</span>
           </div>
         </AccordionTrigger>
         <AccordionContent className="bg-accent/10">
