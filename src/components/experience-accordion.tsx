@@ -13,10 +13,10 @@ export function ExperienceAccordion() {
       transition={{ type: "spring", stiffness: 120, damping: 20 }}
     >
       <AccordionItem value="life-in-japan">
-        <AccordionTrigger className="text-accent hover:bg-accent data-[expanded]:bg-accent/10 group hover:text-primary-foreground w-full cursor-pointer p-2 text-left transition-all duration-150 hover:no-underline [&>svg]:hidden">
+        <AccordionTrigger className="text-accent hover:bg-accent data-[expanded]:bg-accent/10 group hover:text-primary-foreground w-full cursor-pointer p-2 text-left transition-all duration-150 ease-out hover:no-underline [&>svg]:hidden">
           <div className="group-data-[expanded]:text-accent flex items-center justify-between">
             <div className="flex items-center justify-center gap-1">
-              <ChevronUp className="h-4 w-4 transition duration-150 group-data-[expanded]:-rotate-180" />
+              <ChevronUp className="h-4 w-4 transition-transform duration-150 ease-out group-data-[expanded]:-rotate-180" />
               <div>Life in Japan</div>
             </div>
             <span className="hidden md:block">2023 - Present</span>
@@ -31,10 +31,10 @@ export function ExperienceAccordion() {
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="marketing-translator">
-        <AccordionTrigger className="text-accent hover:bg-accent data-[expanded]:bg-accent/10 group hover:text-primary-foreground w-full cursor-pointer p-2 text-left transition-all duration-100 hover:no-underline [&>svg]:hidden">
+        <AccordionTrigger className="text-accent hover:bg-accent data-[expanded]:bg-accent/10 group hover:text-primary-foreground w-full cursor-pointer p-2 text-left transition-all duration-150 ease-out hover:no-underline [&>svg]:hidden">
           <div className="group-data-[expanded]:text-accent flex items-center justify-between">
             <div className="flex items-center justify-center gap-1">
-              <ChevronUp className="h-4 w-4 transition duration-150 group-data-[expanded]:-rotate-180" />
+              <ChevronUp className="h-4 w-4 transition-transform duration-150 ease-out group-data-[expanded]:-rotate-180" />
               <div>Marketing, Translator</div>
             </div>
             <span className="hidden md:block">2019 - 2022</span>
@@ -50,10 +50,10 @@ export function ExperienceAccordion() {
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="family-business">
-        <AccordionTrigger className="text-accent hover:bg-accent data-[expanded]:bg-accent/10 group hover:text-primary-foreground w-full cursor-pointer p-2 text-left transition-all duration-150 hover:no-underline [&>svg]:hidden">
+        <AccordionTrigger className="text-accent hover:bg-accent data-[expanded]:bg-accent/10 group hover:text-primary-foreground w-full cursor-pointer p-2 text-left transition-all duration-150 ease-out hover:no-underline [&>svg]:hidden">
           <div className="group-data-[expanded]:text-accent flex items-center justify-between">
             <div className="flex items-center justify-center gap-1">
-              <ChevronUp className="h-4 w-4 transition duration-150 group-data-[expanded]:-rotate-180" />
+              <ChevronUp className="h-4 w-4 transition-transform duration-150 ease-out group-data-[expanded]:-rotate-180" />
               <div>English Major, Family Business</div>
             </div>
             <span className="hidden md:block">2015 - 2019</span>

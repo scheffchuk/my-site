@@ -44,7 +44,7 @@ export default function ChatBoxButton() {
           height="192"
           quality="95"
           priority={true}
-          className="fixed bottom-5 right-5 h-12 w-12 rounded-full border-2 border-white bg-white object-cover shadow-xl transition-all hover:scale-[1.15] active:scale-105 dark:border-gray-700"
+          className="fixed bottom-5 right-5 h-12 w-12 rounded-full border-2 border-white bg-white object-cover shadow-xl transition-transform duration-150 ease-out hover:scale-[1.15] active:scale-105 dark:border-gray-700"
         />
       </button>
       <AIChatBox open={chatBoxOpen} onClose={() => setChatBoxOpen(false)} />

@@ -36,7 +36,7 @@ export const CopyEmailButton = () => {
       type="button"
       onClick={() => handleCopy("darthusian@gmail.com")}
       disabled={isDisabled}
-      className="bg-accent hover:bg-accent/80 text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs cursor-pointer text-sm w-[70px] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] active:scale-[0.96] transition-all duration-200 select-none"
+      className="bg-accent hover:bg-accent/80 text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs text-sm w-[70px] transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-[0.96] disabled:opacity-50 disabled:cursor-not-allowed select-none"
       aria-label={copied ? "Email copied to clipboard" : "Copy email to clipboard"}
     >
       <AnimatePresence mode="wait" initial={false}>
@@ -86,7 +86,7 @@ export const CopyEmailButtonAlt = () => {
   return (
     <button
       type="button"
-      className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 text-primary-foreground py-0.5 pl-1.5 pr-1.5 rounded-xs cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] active:scale-[0.96] transition-all duration-200 select-none"
+      className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 text-primary-foreground py-0.5 pl-1.5 pr-1.5 rounded-xs transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-[0.96] disabled:opacity-50 disabled:cursor-not-allowed select-none"
       onClick={() => handleCopy("darthusian@gmail.com")}
       disabled={isDisabled}
       aria-label={copied ? "Email copied to clipboard" : "Copy email to clipboard"}

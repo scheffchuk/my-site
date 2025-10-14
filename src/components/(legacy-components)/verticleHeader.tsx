@@ -22,7 +22,7 @@ export default function VerticalHeader() {
           <li key={link.hash} className="w-full">
             <Link
               href={link.hash}
-              className="block w-full rounded-xs px-1.5 py-2 text-sm underline-offset-2 transition duration-100 select-none hover:underline focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] focus-visible:outline-none"
+              className="block w-full rounded-xs px-1.5 py-2 text-sm underline-offset-2 transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring select-none hover:underline"
             >
               {link.name}
             </Link>

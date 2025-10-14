@@ -35,7 +35,7 @@ export default function ThemeSwitch() {
   return (
     <button
       onClick={toggleTheme}
-      className="flex items-center justify-center h-8 w-8 transition-transform duration-200 hover-only:hover:scale-[1.02] active:scale-[0.96] focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] rounded-sm select-none"
+      className="flex items-center justify-center h-8 w-8 transition-transform duration-150 ease-out hover-only:hover:scale-[1.02] active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm select-none"
       aria-label={
         currentTheme === "light" ? "Switch to dark mode" : "Switch to light mode"
       }

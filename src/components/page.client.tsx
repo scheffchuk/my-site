@@ -47,7 +47,7 @@ const Project = ({
       <div className="flex items-center mt-2 gap-x-2">
         {live ? (
           <Link
-            className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 transition text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs cursor-pointer text-sm"
+            className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 transition-colors duration-150 ease-out text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             href={live}
             target="_blank"
             rel="noopener noreferrer"
@@ -63,7 +63,7 @@ const Project = ({
         ) : null}
         {code ? (
           <Link
-            className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 transition text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs cursor-pointer text-sm"
+            className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 transition-colors duration-150 ease-out text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             href={code}
             target="_blank"
             rel="noopener noreferrer"

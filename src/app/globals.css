@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-* {
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -35,16 +30,6 @@
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
-
-  --color-chart-1: hsl(var(--chart-1));
-  --color-chart-2: hsl(var(--chart-2));
-  --color-chart-3: hsl(var(--chart-3));
-  --color-chart-4: hsl(var(--chart-4));
-  --color-chart-5: hsl(var(--chart-5));
-
-  --color-light-green: #e2f3e3;
-  --color-white: #fff;
-
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
@@ -191,38 +176,6 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none; /* Disable text selection for interactive elements */
   }
-}
-
-/* =============================================================================
-   COMPONENT STYLES
-   ============================================================================= */
-
-/* Grid background pattern */
-.bg {
-  background-image:
-    linear-gradient(to right, #101010, rgba(0, 0, 0, 0.83)), url(/noise.svg),
-    linear-gradient(#b3fc03 1px, transparent 1px),
-    linear-gradient(to right, #b3fc03 1px, #000 1px);
-  background-size:
-    auto,
-    auto,
-    20px 20px,
-    20px 20px;
-}
-
-/* Accordion specific grid layout */
-.accordion-grid-cols {
-  grid-template-columns: min-content 125px 1fr min-content min-content;
-}
-
-/* Noise texture overlay */
-.main-noise {
-  position: absolute;
-  inset: 0;
-  background: url(/noise.svg);
-  opacity: 0.4;
-  mix-blend-mode: overlay;
-  pointer-events: none;
 }
 
 @layer base {

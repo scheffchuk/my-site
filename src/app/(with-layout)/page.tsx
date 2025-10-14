@@ -82,7 +82,7 @@ const SocialLink = ({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-sm underline-offset-2 transition duration-200 select-none hover:underline focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] focus-visible:outline-none"
+        className="rounded-sm underline-offset-2 transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring select-none hover:underline"
       >
         {children}
       </Link>
@@ -197,15 +197,16 @@ export default function Home() {
               <p className="font-medium">Mail</p>
               <Link
                 href="mailto:darthusian@gmail.com"
-                className="rounded-sm underline-offset-2 transition duration-200 select-none hover:underline focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] focus-visible:outline-none"
+                className="rounded-sm underline-offset-2 transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring select-none hover:underline"
               >
                 darthusian@gmail.com
               </Link>
               <div className="ml-auto flex gap-x-1">
                 <Button
                   asChild
-                  size={null}
-                  className="hover:bg-accent/80 bg-accent text-primary-foreground hidden w-fit cursor-pointer items-center gap-x-1.5 rounded-xs py-0.5 pr-1.5 pl-1 text-sm transition duration-200 select-none focus-visible:shadow-[0_0_0_2px_hsl(var(--ring))] focus-visible:outline-none active:scale-[0.96] md:flex"
+                  variant="accent"
+                  size="compact"
+                  className="hidden w-fit gap-x-1.5 pr-1.5 pl-1 text-sm md:flex"
                 >
                   <Link href="mailto:darthusian@gmail.com">
                     <PenTool size={12} aria-hidden={true} />
