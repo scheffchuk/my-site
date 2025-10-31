@@ -1,9 +1,14 @@
 import "./globals.css";
 
 import localFont from "next/font/local";
+import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
 import { cn } from "@/lib/utils";
+
+const geist = Geist({
+  subsets: ['latin'],
+})
 
 const paperMono = localFont({
   src: "../assets/PaperMono-Regular.woff2",
@@ -24,7 +29,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth!" suppressHydrationWarning>
-      <body className={cn(paperMono.className, "mx-auto max-w-2xl px-2")}>
+      <body className={cn(geist.className, "mx-auto max-w-2xl px-2")}>
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="blue"

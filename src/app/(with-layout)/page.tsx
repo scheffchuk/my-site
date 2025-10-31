@@ -44,7 +44,7 @@ const DottedSpacer = ({
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h2 className="h-full pt-4 text-2xl font-bold md:py-4 md:pr-4">
+    <h2 className="h-full text-2xl font-semibold">
       {children}
     </h2>
   );
@@ -58,7 +58,7 @@ const Section = ({
   children: React.ReactNode;
 }) => {
   return (
-    <section className="gap-y-2 border-accent border p-4 text-accent flex w-full flex-col">
+    <section className="gap-y-2 text-accent flex w-full flex-col">
       {title ? <SectionTitle>{title}</SectionTitle> : null}
       <SectionContent>{children}</SectionContent>
       <div></div>
@@ -98,7 +98,7 @@ export default function Home() {
   return (
     <>
       <div className="selection:bg-accent/10 flex flex-col justify-between gap-y-6 md:pt-10">
-        <nav className="top-2 right-0 flex gap-1 max-md:py-4 md:absolute">
+        <nav className="top-4 right-0 flex gap-1 max-md:py-4 md:absolute">
           {/* <Link
             href="/"
             target="_blank"
@@ -118,7 +118,7 @@ export default function Home() {
         </nav>
 
         <Section title=" ">
-          <div className="flex flex-col gap-y-2">
+          <div className="flex flex-col gap-y-2 md:pt-10">
             <h1 className="text-4xl font-bold">
               <ScrambleIn
                 text="Scheff Chuk"
