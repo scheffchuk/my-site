@@ -12,58 +12,39 @@ export function ExperienceAccordion() {
       className="flex w-full flex-col gap-y-2"
       transition={{ type: "spring", stiffness: 120, damping: 20 }}
     >
-      <AccordionItem value="life-in-japan">
+      <AccordionItem value="now">
         <AccordionTrigger className="text-accent hover:bg-accent data-[expanded]:bg-accent/10 group hover:text-primary-foreground w-full cursor-pointer p-2 text-left transition-all duration-150 ease-out hover:no-underline [&>svg]:hidden">
           <div className="group-data-[expanded]:text-accent flex items-center justify-between">
             <div className="flex items-center justify-center gap-1">
               <ChevronUp className="h-4 w-4 transition-transform duration-150 ease-out group-data-[expanded]:-rotate-180" />
-              <div>Life in Japan</div>
+              <div>Now</div>
             </div>
             <span className="hidden md:block">2023 - Present</span>
           </div>
         </AccordionTrigger>
         <AccordionContent className="bg-accent/10">
           <p className="text-accent px-3 pb-4">
-            Move to Japan and enrolled in language school. Passed JLPT N1 test
-            after one year of study. Then enrolled in an IT trade school for
-            systematic learning, while self-learning web development.
+            Moved to Japan, enrolled in language school, and passed JLPT N1
+            after one year. Currently studying at an IT trade school while
+            self-learning web development.
           </p>
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="marketing-translator">
+      <AccordionItem value="past">
         <AccordionTrigger className="text-accent hover:bg-accent data-[expanded]:bg-accent/10 group hover:text-primary-foreground w-full cursor-pointer p-2 text-left transition-all duration-150 ease-out hover:no-underline [&>svg]:hidden">
           <div className="group-data-[expanded]:text-accent flex items-center justify-between">
             <div className="flex items-center justify-center gap-1">
               <ChevronUp className="h-4 w-4 transition-transform duration-150 ease-out group-data-[expanded]:-rotate-180" />
-              <div>Marketing, Translator</div>
+              <div>Past</div>
             </div>
-            <span className="hidden md:block">2019 - 2022</span>
+            <span className="hidden md:block">2013 - 2022</span>
           </div>
         </AccordionTrigger>
         <AccordionContent className="bg-accent/10">
           <p className="text-accent px-3 pb-4">
-            Primarily handled SNS marketing, including event planning and
-            collaboration with designers, covering a wide range of
-            responsibilities. Also worked as a freelance translator and English
-            teacher.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="family-business">
-        <AccordionTrigger className="text-accent hover:bg-accent data-[expanded]:bg-accent/10 group hover:text-primary-foreground w-full cursor-pointer p-2 text-left transition-all duration-150 ease-out hover:no-underline [&>svg]:hidden">
-          <div className="group-data-[expanded]:text-accent flex items-center justify-between">
-            <div className="flex items-center justify-center gap-1">
-              <ChevronUp className="h-4 w-4 transition-transform duration-150 ease-out group-data-[expanded]:-rotate-180" />
-              <div>English Major, Family Business</div>
-            </div>
-            <span className="hidden md:block">2015 - 2019</span>
-          </div>
-        </AccordionTrigger>
-        <AccordionContent className="bg-accent/10">
-          <p className="text-accent px-3 pb-4">
-            Helping with the family restaurant business while majoring in
-            English at university. Develop English skills, gain an international
-            perspective, and appreciate diverse values.
+            Majored in English while helping with the family restaurant. Later
+            worked in SNS marketing, event planning, and freelance translation
+            and English teaching.
           </p>
         </AccordionContent>
       </AccordionItem>

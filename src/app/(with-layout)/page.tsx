@@ -11,12 +11,9 @@ import TwitterXMotion from "@/components/twitter-x-loop";
 import NewFooter from "@/components/new-footer";
 import { ExperienceAccordion } from "@/components/experience-accordion";
 import { StayTextLoop } from "@/components/stay-loop";
-import ScrambleIn from "@/components/fancy/text/scramble-in";
 import {
   getAnimationDuration,
   ROW_DELAY,
-  SCRAMBLE_SPEED,
-  SCRAMBLED_LETTER_COUNT,
 } from "@/lib/utils";
 
 export const dynamic = "force-static";
@@ -44,7 +41,7 @@ const DottedSpacer = ({
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h2 className="h-full text-2xl font-semibold">
+    <h2 className="h-full text-2xl font-medium">
       {children}
     </h2>
   );
@@ -97,7 +94,7 @@ const SectionContent = ({ children }: { children: React.ReactNode }) => {
 export default function Home() {
   return (
     <>
-      <div className="selection:bg-accent/10 flex flex-col justify-between gap-y-6 md:pt-10">
+      <div className="selection:bg-accent/10 flex flex-col justify-between gap-y-12 md:pt-10">
         <nav className="top-4 right-0 flex gap-1 max-md:py-4 md:absolute">
           {/* <Link
             href="/"
@@ -120,20 +117,10 @@ export default function Home() {
         <Section title=" ">
           <div className="flex flex-col gap-y-2 md:pt-10">
             <h1 className="text-4xl font-bold">
-              <ScrambleIn
-                text="Scheff Chuk"
-                delay={0}
-                scrambleSpeed={SCRAMBLE_SPEED}
-                scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
-              />
+              Scheff Chuk
             </h1>
             <p className="text-lg">
-              <ScrambleIn
-                text="is learning to be a good full-stack developer. Always trying out new things."
-                delay={getAnimationDuration("Scheff Chuk")}
-                scrambleSpeed={SCRAMBLE_SPEED}
-                scrambledLetterCount={SCRAMBLED_LETTER_COUNT}
-              />
+              is learning to be a good full-stack developer. Always trying out new things.
             </p>
             <div className="pt-10">
               <StayTextLoop />
