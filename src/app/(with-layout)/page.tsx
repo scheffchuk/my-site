@@ -6,15 +6,11 @@ import { Button } from "@/components/ui/button";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import ThemeChanger from "@/components/theme-switcher";
 
-import { Project } from "@/components/page.client";
+import { ProjectCard } from "@/components/page.client";
 import TwitterXMotion from "@/components/twitter-x-loop";
 import NewFooter from "@/components/new-footer";
 import { ExperienceAccordion } from "@/components/experience-accordion";
 import { StayTextLoop } from "@/components/stay-loop";
-import {
-  getAnimationDuration,
-  ROW_DELAY,
-} from "@/lib/utils";
 
 export const dynamic = "force-static";
 
@@ -41,7 +37,7 @@ const DottedSpacer = ({
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h2 className="h-full text-2xl font-medium">
+    <h2 className="h-full text-medium font-medium">
       {children}
     </h2>
   );
@@ -94,7 +90,7 @@ const SectionContent = ({ children }: { children: React.ReactNode }) => {
 export default function Home() {
   return (
     <>
-      <div className="selection:bg-accent/10 flex flex-col justify-between gap-y-12 md:pt-10">
+      <div className="selection:bg-accent/10 flex flex-col justify-between gap-y-18 md:pt-10">
         <nav className="top-4 right-0 flex gap-1 max-md:py-4 md:absolute">
           {/* <Link
             href="/"
@@ -154,23 +150,21 @@ export default function Home() {
             </div> */}
           </div>
         </Section>
-        <Section title="Past">
+        <Section title="Experience">
           <ExperienceAccordion />
         </Section>
         <Section title="Projects">
-          <Project
+          <ProjectCard
             title="My site"
             description="My portfolio website. It serves as a playground for me to try out various techs, currently going through redesign."
-            delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 7}
             hrefs={{
               code: "https://github.com/scheffchuk/scheff-portfolio-nextjs",
             }}
           />
 
-          <Project
+          <ProjectCard
             title="HeadSalon"
             description="I built this blog web app for my favorite writer, WhigZhou, with a focus on a clean design, exceptional speed, and a smooth user experience."
-            delay={getAnimationDuration("Scheff Chuk") + ROW_DELAY * 11}
             hrefs={{
               live: "https://headsalon.vercel.app/",
               code: "https://github.com/scheffchuk/headsalon",

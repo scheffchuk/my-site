@@ -36,7 +36,7 @@ export default async function RootLayout({
           enableSystem={false}
           storageKey="color-theme"
           disableTransitionOnChange={false}
-          themes={["red", "green", "blue", "darkBlue"]}
+          themes={["red", "green", "darkBlue"]}
         >
           {children}
         </ThemeProvider>

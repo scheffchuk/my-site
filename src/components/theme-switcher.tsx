@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 
 const ThemeChanger = () => {
   const { theme, setTheme } = useTheme();
-  const themes = ["blue", "green", "red", "darkBlue"];
+  const themes = ["green", "red", "darkBlue"];
 
   const toggleTheme = () => {
     const currentThemeIndex = themes.indexOf(theme ?? themes[0]);
