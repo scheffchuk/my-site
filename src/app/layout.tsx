@@ -7,8 +7,8 @@ import { ThemeProvider } from "next-themes";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({
-  subsets: ['latin'],
-})
+  subsets: ["latin"],
+});
 
 const paperMono = localFont({
   src: "../assets/PaperMono-Regular.woff2",
@@ -29,17 +29,19 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth!" suppressHydrationWarning>
-      <body className={cn(geist.className, "mx-auto max-w-2xl px-2")}>
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="blue"
-          enableSystem={false}
-          storageKey="color-theme"
-          disableTransitionOnChange={false}
-          themes={["red", "green", "darkBlue"]}
-        >
-          {children}
-        </ThemeProvider>
+      <body className={cn(geist.className)}>
+        <main className="mx-auto max-w-2xl px-6 md:pb-16 selection:bg-accent/10">
+          <ThemeProvider
+            attribute="data-theme"
+            defaultTheme="blue"
+            enableSystem={false}
+            storageKey="color-theme"
+            disableTransitionOnChange={false}
+            themes={["red", "green", "darkBlue"]}
+          >
+            {children}
+          </ThemeProvider>
+        </main>
       </body>
     </html>
   );

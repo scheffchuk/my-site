@@ -20,8 +20,8 @@ const ProjectCard = ({
   hrefs: { live, code },
 }: ProjectCardProps) => {
   return (
-    <div className="px-2 pt-4 pb-5 flex flex-col gap-y-2 hover:bg-accent/10">
-      <h3 className="font-semibold">
+    <div className="-mx-2 px-2 pt-4 pb-5 flex flex-col gap-y-2 hover:bg-accent/10">
+      <h3 className="font-base">
         {title}
       </h3>
       <p>
@@ -30,7 +30,7 @@ const ProjectCard = ({
       <div className="flex items-center mt-2 gap-x-2">
         {live ? (
           <Link
-            className="flex gap-x-1.5 items-center bg-accent hover:bg-accent/80 transition-colors duration-150 ease-out text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex items-center bg-accent hover:bg-accent/80 transition-colors duration-150 ease-out text-primary-foreground py-0.5 pl-1 pr-1.5 rounded-xs text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             href={live}
             target="_blank"
             rel="noopener noreferrer"

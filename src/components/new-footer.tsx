@@ -1,6 +1,6 @@
 const NewFooter = () => {
   return (
-    <footer className="py-24 text-[12px] text-accent">
+    <footer className="py-8 text-[14px] text-accent/60">
       <div className="">
         <div className="col-start-2 grid grid-cols-[auto_1fr_auto] items-center gap-x-4">
           <span> Scheff © {new Date().getFullYear()}</span>
