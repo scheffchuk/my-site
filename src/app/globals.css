@@ -92,12 +92,6 @@
     --primary-foreground: hsl(0, 0%, 98%);
   }
 
-  [data-theme="blue"] {
-    --accent: hsl(210, 100%, 60%);
-    --primary: hsl(210, 100%, 60%);
-    --primary-foreground: hsl(0, 0%, 98%);
-  }
-
   [data-theme="darkBlue"] {
     --accent: hsl(201, 90%, 27.5%);
     --primary: hsl(201, 90%, 27.5%);

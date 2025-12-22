@@ -2,7 +2,7 @@ import Typewriter from "./fancy/text/typewriter";
 
 export function StayTextLoop() {
   return (
-    <div className="text-lg whitespace-pre-wrap">
+    <div className="text-base whitespace-pre-wrap">
       <span>{"Stay "}</span>
       <Typewriter
           text={[

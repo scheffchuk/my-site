@@ -3,33 +3,10 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import ThemeChanger from "@/components/theme-switcher";
 
-import { ProjectCard } from "@/components/page.client";
+import { ProjectCard } from "@/components/project-card";
 import NewFooter from "@/components/new-footer";
 import { ExperienceAccordion } from "@/components/experience-accordion";
 import { StayTextLoop } from "@/components/stay-loop";
-
-export const dynamic = "force-static";
-
-const DottedSpacer = ({
-  lines = 3,
-  className,
-}: {
-  lines?: number;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("my-0.5 flex flex-col gap-y-0.5", className)}>
-      {Array.from({ length: lines }).map((_, index) => (
-        <span
-          // biome-ignore lint/suspicious/noArrayIndexKey: this is a static list
-          key={index}
-          className="border-accent h-px border-b border-dotted"
-          aria-hidden
-        />
-      ))}
-    </div>
-  );
-};
 
 
 export default function Home() {
@@ -64,24 +41,19 @@ export default function Home() {
           </div>
           <div></div>
         </section>
-        <section className="text-accent flex w-full flex-col gap-y-2">
+        <section className="text-accent flex w-full flex-col gap-y-3">
           <h2 className="text-medium h-full font-medium">Projects</h2>
           <div>
             <ProjectCard
               title="My site"
-              description="My portfolio website. It serves as a playground for me to try out various techs, currently going through redesign."
-              hrefs={{
-                code: "https://github.com/scheffchuk/scheff-portfolio-nextjs",
-              }}
+              description="My portfolio and playground for practicing new tricks."
+              websiteUrl="https://scheff.dev"
             />
 
             <ProjectCard
               title="HeadSalon"
-              description="I built this blog web app for my favorite writer, WhigZhou, with a focus on a clean design, exceptional speed, and a smooth user experience."
-              hrefs={{
-                live: "https://headsalon.vercel.app/",
-                code: "https://github.com/scheffchuk/headsalon",
-              }}
+              description="A blog web app for my favorite writer, WhigZhou."
+              websiteUrl="https://headsalon.vercel.app/"
             />
           </div>
           <div></div>
