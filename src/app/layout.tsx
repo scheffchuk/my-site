@@ -33,7 +33,7 @@ export default async function RootLayout({
         <main className="mx-auto max-w-2xl px-6 md:pb-16 selection:bg-accent/10">
           <ThemeProvider
             attribute="data-theme"
-            defaultTheme="blue"
+            defaultTheme="darkBlue"
             enableSystem={false}
             storageKey="color-theme"
             disableTransitionOnChange={false}
