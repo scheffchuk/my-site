@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import ThemeChanger from "@/components/theme-switcher";
 
 import { ProjectCard } from "@/components/project-card";
@@ -11,7 +10,6 @@ import { StayTextLoop } from "@/components/stay-loop";
 
 export default function Home() {
   return (
-    <>
       <main className=" flex flex-col justify-between gap-y-12">
         <header className="flex items-center justify-end py-4">
           <ThemeChanger />
@@ -41,9 +39,8 @@ export default function Home() {
           </div>
           <div></div>
         </section>
-        <section className="text-accent flex w-full flex-col gap-y-3">
+        <section className="text-accent flex w-full flex-col gap-y-2">
           <h2 className="text-medium h-full font-medium">Projects</h2>
-          <div>
             <ProjectCard
               title="My site"
               description="My portfolio and playground for practicing new tricks."
@@ -55,8 +52,6 @@ export default function Home() {
               description="A blog web app for my favorite writer, WhigZhou."
               websiteUrl="https://headsalon.vercel.app/"
             />
-          </div>
-          <div></div>
         </section>
         <section className="text-accent flex w-full flex-col gap-y-2">
           <h2 className="text-medium h-full font-medium">Links</h2>
@@ -104,6 +99,5 @@ export default function Home() {
         </section>
         <NewFooter />
       </main>
-    </>
   );
 }

@@ -7,7 +7,6 @@ export const viewport: Viewport = {
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-full relative">
-      <div aria-hidden />
       {children}
     </div>
   );
