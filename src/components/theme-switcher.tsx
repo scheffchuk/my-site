@@ -21,7 +21,7 @@ const ThemeChanger = () => {
         onClick={toggleTheme}
         variant="accent"
         size="compact"
-        className="gap-x-1.5 py-1 px-1 h-full"
+        className="py-1 px-1 h-full"
         aria-label="Change theme"
       >
         <PaintRoller

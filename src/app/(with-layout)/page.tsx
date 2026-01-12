@@ -27,20 +27,25 @@ export default function Home() {
           <h1 className="text-medium font-medium">Scheff Chuk</h1>
           <p className="text-medium text-accent/80">Self-taught design engineer</p>
         </Section>
-      <Section title="Experience">
-        <ExperienceAccordion />
+      <Section title="">
+        <p className="text-accent/80">I want to build things that are performant and beautiful. I believe building software is like composing Jazz. You must find the balance between order and chaos.</p>
       </Section>
 
       <Section title="Projects">
         <ProjectCard
           title="My site"
-          description="My portfolio and playground for practicing new tricks."
+          description="My portfolio and playground."
           websiteUrl="https://scheff.dev"
         />
         <ProjectCard
           title="HeadSalon"
           description="A blog web app for my favorite writer, WhigZhou."
           websiteUrl="https://headsalon.vercel.app/"
+        />
+        <ProjectCard
+          title="ODY CELL"
+          description="A marketing site for a book store in Tokyo."
+          websiteUrl="https://odycell.space/"
         />
       </Section>
 
