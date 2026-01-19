@@ -50,7 +50,7 @@ export default function Home() {
       </Section>
 
       <Section title="Links">
-        <div className="flex flex-wrap gap-x-4 py-2">
+        <div className="flex flex-wrap gap-x-4 py-2 text-accent/80">
           {links.map(({ href, label }) => (
             <Link
               key={label}
