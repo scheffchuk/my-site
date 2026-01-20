@@ -12,10 +12,12 @@ async function getTokyoWeather() {
 
     const weatherData = await weatherResponse.json();
 
+    const timeDate = new Date(weatherData.current_weather.time);
+
     return {
       city: "Tokyo, Japan",
       temperature: weatherData.current_weather.temperature,
-      time: weatherData.current_weather.time.toLocaleTimeString("en-US", {
+      time: timeDate.toLocaleTimeString("en-US", {
         timeZone: "Asia/Tokyo",
         hour: "2-digit",
         minute: "2-digit",
