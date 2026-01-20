@@ -12,7 +12,16 @@ async function getTokyoWeather() {
 
     const weatherData = await weatherResponse.json();
 
-    return weatherData;
+    return {
+      city: "Tokyo, Japan",
+      temperature: weatherData.current_weather.temperature,
+      time: weatherData.current_weather.time.toLocaleTimeString("en-US", {
+        timeZone: "Asia/Tokyo",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      }),
+    };
   } catch (error) {
     console.warn("Weather API failed", error);
     return null;
@@ -28,7 +37,7 @@ export async function TokyoWeatherTime() {
 
   return (
     <div className="text-accent text-sm">
-      Tokyo, Japan · {data.current_weather.temperature}° · {data.current_weather.time}
+      {data.city} · {data.temperature}°C · {data.time}
     </div>
   );
 }

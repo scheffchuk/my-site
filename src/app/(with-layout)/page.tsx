@@ -17,7 +17,7 @@ const linkClassName =
 export default function Home() {
   return (
     <main className="flex flex-col">
-        <header className="flex justify-end items-center py-4 gap-x-4">
+        <header className="flex justify-between md:justify-end items-center py-4 gap-x-4">
           <TokyoWeatherTime />
           <ThemeChanger />
         </header>
