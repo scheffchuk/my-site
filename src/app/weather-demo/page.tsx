@@ -9,7 +9,7 @@ export default async function WeatherDemo() {
           <TokyoWeatherTime />
         </div>
         <p className="text-muted-foreground text-sm">
-          Data cached for 5 minutes • Time updates on each page load
+          Weather cached for 15 minutes • Time updates every minute
         </p>
       </div>
     </div>

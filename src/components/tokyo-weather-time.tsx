@@ -1,37 +1,16 @@
-async function getTokyoWeather() {
-  try {
-    const weatherResponse = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&current_weather=true&temperature_unit=celsius",
-    );
+"use client";
 
-    if (!weatherResponse.ok) {
-      throw new Error(
-        `Weather API responded with status: ${weatherResponse.status}`,
-      );
-    }
+import { useQuery } from "@tanstack/react-query";
+import { fetchTokyoWeatherTime } from "@/lib/weather-api";
 
-    const weatherData = await weatherResponse.json();
-
-    const timeDate = new Date(weatherData.current_weather.time);
-
-    return {
-      city: "Tokyo, Japan",
-      temperature: weatherData.current_weather.temperature,
-      time: timeDate.toLocaleTimeString("en-US", {
-        timeZone: "Asia/Tokyo",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      }),
-    };
-  } catch (error) {
-    console.warn("Weather API failed", error);
-    return null;
-  }
-}
-
-export async function TokyoWeatherTime() {
-  const data = await getTokyoWeather();
+export function TokyoWeatherTime() {
+  const { data } = useQuery({
+    queryKey: ["tokyo-weather-time"],
+    queryFn: fetchTokyoWeatherTime,
+    refetchInterval: 60000, // Update every minute
+    staleTime: 60000, // Consider data stale after 1 minute
+    gcTime: 900000, // Keep in cache for 15 minutes (15 * 60 * 1000)
+  });
 
   if (!data) {
     return null;
