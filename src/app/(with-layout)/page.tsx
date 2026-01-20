@@ -2,7 +2,6 @@ import Link from "next/link";
 import ThemeChanger from "@/components/theme-switcher";
 import { ProjectCard } from "@/components/project-card";
 import Footer from "@/components/footer";
-import { TokyoWeatherTime } from "@/components/tokyo-weather-time";
 
 const links = [
   { href: "mailto:hi@scheff.dev", label: "Mail" },
@@ -18,7 +17,7 @@ export default function Home() {
   return (
     <main className="flex flex-col">
         <header className="flex justify-between md:justify-end items-center py-4 gap-x-4">
-          <TokyoWeatherTime />
+          {/* <TokyoWeatherTime /> */}
           <ThemeChanger />
         </header>
         <div className="flex flex-col gap-y-20">
