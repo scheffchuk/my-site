@@ -30,7 +30,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className="scroll-smooth!" suppressHydrationWarning>
       <body className={cn(geist.className)}>
-        <main className="mx-auto max-w-2xl px-6 selection:bg-accent/10">
+        <main className="selection:bg-accent/10 mx-auto max-w-2xl px-6">
           <ThemeProvider
             attribute="data-theme"
             defaultTheme="darkBlue"
