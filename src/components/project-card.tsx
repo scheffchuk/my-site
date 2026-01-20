@@ -16,7 +16,7 @@ const ProjectCard = ({
   return (
     <Link href={websiteUrl} target="_blank" rel="noopener noreferrer" className="-mx-2 p-2 flex flex-col hover:bg-accent/10 rounded-sm">
       
-      <h3 className="font-base">
+      <h3 className="font-base text-accent">
         {title}
       </h3>
       <p className="text-accent/80">

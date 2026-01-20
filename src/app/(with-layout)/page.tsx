@@ -2,8 +2,6 @@ import Link from "next/link";
 import ThemeChanger from "@/components/theme-switcher";
 import { ProjectCard } from "@/components/project-card";
 import Footer from "@/components/footer";
-import { ExperienceAccordion } from "@/components/experience-accordion";
-import { Section } from "@/components/section";
 
 const links = [
   { href: "mailto:hi@scheff.dev", label: "Mail" },
@@ -23,15 +21,15 @@ export default function Home() {
         </header>
         <div className="flex flex-col gap-y-20">
 
-        <Section>
-          <h1 className="text-medium font-medium">Scheff Chuk</h1>
+        <div>
+          <h1 className="text-medium font-medium text-accent">Scheff Chuk</h1>
           <p className="text-medium text-accent/80">Self-taught design engineer</p>
-        </Section>
-      <Section title="">
+        </div>
+      <div>
         <p className="text-accent/80">I want to build things that are performant and beautiful. I believe building software is like composing Jazz. You must find the balance between order and chaos.</p>
-      </Section>
+      </div>
 
-      <Section title="Projects">
+      <div>
         <ProjectCard
           title="My site"
           description="My portfolio and playground."
@@ -44,12 +42,13 @@ export default function Home() {
         />
         <ProjectCard
           title="ODY CELL"
-          description="A marketing site for a book store in Tokyo."
+          description="A marketing site for a book store in Tokyo I am currently working on."
           websiteUrl="https://odycell.space/"
         />
-      </Section>
+      </div>
 
-      <Section title="Links">
+      <div>
+        <h2 className="text-medium font-medium text-accent">Links</h2>
         <div className="flex flex-wrap gap-x-4 py-2 text-accent/80">
           {links.map(({ href, label }) => (
             <Link
@@ -63,7 +62,7 @@ export default function Home() {
             </Link>
           ))}
         </div>
-      </Section>
+      </div>
       <Footer />
       </div>
     </main>
