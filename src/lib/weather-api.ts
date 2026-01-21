@@ -4,7 +4,7 @@ export interface TokyoWeatherData {
   time: string;
 }
 
-export async function fetchTokyoWeatherTime(): Promise<TokyoWeatherData | null> {
+export async function fetchTokyoWeatherTime(): Promise<TokyoWeatherData> {
   try {
     const weatherResponse = await fetch(
       "https://api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&current_weather=true&temperature_unit=celsius",
@@ -33,6 +33,6 @@ export async function fetchTokyoWeatherTime(): Promise<TokyoWeatherData | null> 
     };
   } catch (error) {
     console.warn("Weather API failed", error);
-    return null;
+    throw new Error("Failed to fetch Tokyo weather time");
   }
 }

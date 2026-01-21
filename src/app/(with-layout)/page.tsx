@@ -18,7 +18,7 @@ const linkClassName =
 export default function Home() {
   return (
     <main className="flex flex-col">
-      <header className="flex items-center justify-between gap-x-4 py-4 md:justify-end">
+      <header className="flex items-center justify-between gap-x-4 py-4">
         <Suspense fallback={<div className="text-accent/80 text-sm">Hi there</div>}>
           <TokyoWeatherTime />
         </Suspense>
