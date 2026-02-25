@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 
 import { cn } from "@/lib/utils";
 import { QueryClientProviderWrapper } from "@/lib/query-client";
+import { ConvexClientProvider } from "@/lib/ConvexClientProvider";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className="scroll-smooth!" suppressHydrationWarning>
       <body className={cn(geist.className)}>
-        <main className="selection:bg-accent/10 mx-auto max-w-2xl px-6">
+        <ConvexClientProvider>
           <QueryClientProviderWrapper>
             <ThemeProvider
               attribute="data-theme"
@@ -44,7 +45,7 @@ export default async function RootLayout({
               {children}
             </ThemeProvider>
           </QueryClientProviderWrapper>
-        </main>
+        </ConvexClientProvider>
       </body>
     </html>
   );

@@ -10,6 +10,7 @@ const links = [
   { href: "https://x.com/scheffchuk", label: "Twitter/X" },
   { href: "https://www.instagram.com/scheff.d.chuk", label: "Instagram" },
   { href: "https://github.com/scheffchuk", label: "GitHub" },
+  { href: "/guestbook", label: "Guestbook" },
 ];
 
 const linkClassName =
@@ -17,7 +18,7 @@ const linkClassName =
 
 export default function Home() {
   return (
-    <main className="flex flex-col">
+    <div className="flex flex-col">
       <header className="flex items-center justify-between gap-x-4 py-4">
         <Suspense fallback={<div className="text-accent/80 text-sm">Hi there</div>}>
           <TokyoWeatherTime />
@@ -65,8 +66,9 @@ export default function Home() {
                 key={label}
                 href={href}
                 className={linkClassName}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(href.startsWith("http") || href.startsWith("mailto:")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
               >
                 {label}
               </Link>
@@ -75,6 +77,6 @@ export default function Home() {
         </div>
         <Footer />
       </div>
-    </main>
+    </div>
   );
 }

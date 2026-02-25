@@ -6,9 +6,9 @@ export const viewport: Viewport = {
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-full relative mb-16">
-      {children}
-    </div>
+    <main className="selection:bg-accent/10 mx-auto max-w-2xl px-6">
+      <div className="h-full relative mb-16">{children}</div>
+    </main>
   );
 };
 export default Layout;

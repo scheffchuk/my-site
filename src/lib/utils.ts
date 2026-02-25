@@ -52,3 +52,5 @@ export const SCRAMBLED_LETTER_COUNT = 4;
 export const getAnimationDuration = (text: string) => {
   return Math.min((text.length - SCRAMBLED_LETTER_COUNT) * SCRAMBLE_SPEED, 100);
 };
+
+export const getRandomRotation = () => (Math.random() - 0.5) * 12;
