@@ -27,7 +27,7 @@ export function Note({
     >
       {signature ? (
         <div
-          className="mb-2 [&_svg]:max-h-48 [&_svg]:w-full bg-amber-300"
+          className="mb-2 [&_svg]:max-h-48 [&_svg]:w-full bg-gray-200"
           dangerouslySetInnerHTML={{ __html: signature }}
         />
       ) : null}

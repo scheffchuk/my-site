@@ -245,16 +245,13 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
       case 2:
         return (
           <div className="space-y-2">
-            <p className="text-muted-foreground text-sm">
-              why not a little drawing as well! be creative!!
-            </p>
-            <div className="rounded border border-input bg-background">
+            <div className="border border-input bg-background">
               <Signature ref={signatureRef} />
             </div>
             <button
               type="button"
               onClick={() => signatureRef.current?.clear?.()}
-              className="text-muted-foreground hover:text-foreground text-xs"
+              className="text-muted-foreground hover:text-foreground text-sm"
             >
               clear
             </button>

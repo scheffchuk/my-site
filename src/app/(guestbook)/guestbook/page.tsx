@@ -14,7 +14,7 @@ export default function GuestbookPage() {
       <div className="fixed top-4 left-4 right-4 z-50 flex items-center justify-between">
         <Link
           href="/"
-          className="rounded-md border border-accent/30 bg-background/80 px-3 py-2 text-sm text-accent/90 backdrop-blur-sm transition-colors hover:bg-accent/10 hover:text-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          className="rounded-md border border-accent/30 bg-background/80 px-3 py-2 text-sm text-accent/90 backdrop-blur-sm transition-colors hover:text-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none active:scale-[0.98]"
         >
           <ArrowLeft className="mr-1 inline-block size-4" aria-hidden />
           take me home

@@ -28,8 +28,8 @@ export function DraggableNote({
   const r = getRandomRotation();
   const [initialRotate] = useState(r);
   const [x, y] = [
-    initialX ?? Math.floor(Math.random() * Math.min(1300, typeof window !== "undefined" ? window.innerWidth - 100 : 800)),
-    initialY ?? Math.floor(Math.random() * Math.min(900, typeof window !== "undefined" ? window.innerHeight - 100 : 600)),
+    initialX ?? Math.floor(Math.random() * 1300),
+    initialY ?? Math.floor(Math.random() * 900),
   ];
 
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
@@ -51,20 +51,16 @@ export function DraggableNote({
   return (
     <motion.div
       key={id}
-      className="absolute cursor-grab touch-none active:cursor-grabbing"
-      style={{
-        left: x,
-        top: y,
-        zIndex,
-      }}
+      className="absolute select-none touch-none cursor-grab active:cursor-grabbing"
+      style={{ zIndex }}
       drag
-      dragMomentum={false}
-      dragElastic={0.1}
-      onDragStart={updateZIndex}
+      dragElastic={0.2}
+      dragTransition={{ power: 0.2, timeConstant: 200 }}
+      onMouseDown={updateZIndex}
+      onTouchStart={updateZIndex}
       onDragEnd={handleDragEnd}
-      initial={{ rotate: initialRotate }}
+      initial={{ rotate: initialRotate, x, y }}
       animate={controls}
-      whileTap={{ scale: 1.02 }}
     >
       <Note name={name} content={content} signature={signature} />
     </motion.div>
