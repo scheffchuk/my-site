@@ -8,34 +8,11 @@ import useMeasure from "react-use-measure";
 import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import Signature, { type SignatureRef } from "@uiw/react-signature";
 import { cn } from "@/lib/utils";
-import { Field } from "./field";
+import { Field, FieldContent, FieldError, FieldLabel } from "@/components/ui/field";
 import type { OptimisticEntry } from "./guestbook-entries";
 import { useAction } from "convex/react";
+import { Loader2 } from "lucide-react";
 
-function Spinner() {
-  return (
-    <svg
-      className="size-4 animate-spin"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden
-    >
-      <circle
-        className="opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="4"
-      />
-      <path
-        className="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-      />
-    </svg>
-  );
-}
 
 const transition = {
   type: "spring",
@@ -70,6 +47,23 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
   });
 
   const buttonText = ["Write me a note", "Next", "Submit", "Thanks!"][step];
+  const inputClassName = cn(
+    "w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+    "shadow-[rgba(0,0,0,0.06)_0px_2px_4px_0px_inset]",
+    "placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+  );
+  const validateName = (value: string) => {
+    const trimmed = value.trim();
+    if (!trimmed) return "pls fill out all fields";
+    if (trimmed.length > 50) return "ur name is too long";
+    return undefined;
+  };
+  const validateMessage = (value: string) => {
+    const trimmed = value.trim();
+    if (!trimmed) return "pls fill out all fields";
+    if (trimmed.length > 200) return "love ur long entry, but can u make it shorter?";
+    return undefined;
+  };
 
   useEffect(() => {
     if (step !== 3) return;
@@ -100,10 +94,6 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
         message: errors?.message?.[0],
       });
     };
-    const syncFieldErrors = async () => {
-      await Promise.all([form.validateField("name", "submit"), form.validateField("message", "submit")]);
-    };
-
     if (step === 3) {
       setStep(0);
       return;
@@ -121,21 +111,27 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
     }
 
     if (step === 1) {
-      setLoading(true);
       const { name, message } = form.state.values;
+      const clientNameError = validateName(name);
+      const clientMessageError = validateMessage(message);
+      if (clientNameError || clientMessageError) {
+        clearServerErrors();
+        await Promise.all([form.validateField("name", "submit"), form.validateField("message", "submit")]);
+        return;
+      }
+
+      setLoading(true);
       const result = await moderateAndCreate({
-        name,
-        message,
+        name: name.trim(),
+        message: message.trim(),
         validateOnly: true,
       });
       setLoading(false);
       if (!result.success) {
         setServerErrors(result.errors);
-        await syncFieldErrors();
         return;
       }
       clearServerErrors();
-      await syncFieldErrors();
     }
 
     if (step === 2) {
@@ -149,15 +145,14 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
       const localEntryId = crypto.randomUUID();
       const { name, message } = form.state.values;
       const result = await moderateAndCreate({
-        name,
-        message,
+        name: name.trim(),
+        message: message.trim(),
         signature: sig,
         localEntryId,
       });
 
       if (!result.success) {
         setServerErrors(result.errors);
-        await syncFieldErrors();
         setLoading(false);
         return;
       }
@@ -168,8 +163,8 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
       onEntryCreated({
         id: crypto.randomUUID(),
         localEntryId,
-        name,
-        message,
+        name: name.trim(),
+        message: message.trim(),
         signature: sig,
         initialX,
         initialY,
@@ -197,48 +192,80 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
             <form.Field
               name="name"
               validators={{
-                onSubmit: () => serverValidationErrors.name,
+                onSubmit: () => validateName(form.state.values.name) ?? serverValidationErrors.name,
               }}
             >
-              {(field) => (
-                <Field
-                  label="Name"
-                  name="created_by"
-                  value={field.state.value}
-                  onChange={(e) => {
-                    if (serverValidationErrors.name) {
-                      setServerValidationErrors((prev) => ({ ...prev, name: undefined }));
-                    }
-                    field.handleChange(e.target.value);
-                  }}
-                  placeholder="ur name..."
-                  autoComplete="name"
-                  error={typeof field.state.meta.errors[0] === "string" ? field.state.meta.errors[0] : undefined}
-                />
-              )}
+              {(field) => {
+                const nameError =
+                  (typeof field.state.meta.errors[0] === "string"
+                    ? field.state.meta.errors[0]
+                    : undefined) ?? serverValidationErrors.name;
+                return (
+                  <Field data-invalid={!!nameError}>
+                    <FieldLabel htmlFor="guestbook-created-by">Name</FieldLabel>
+                    <FieldContent>
+                      <input
+                        id="guestbook-created-by"
+                        name="created_by"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => {
+                          if (serverValidationErrors.name) {
+                            setServerValidationErrors((prev) => ({ ...prev, name: undefined }));
+                          }
+                          field.handleChange(e.target.value);
+                        }}
+                        placeholder="ur name..."
+                        autoComplete="name"
+                        className={cn(inputClassName, nameError && "border-destructive focus-visible:ring-destructive")}
+                        aria-invalid={!!nameError}
+                      />
+                      <FieldError errors={nameError ? [{ message: nameError }] : undefined} />
+                    </FieldContent>
+                  </Field>
+                );
+              }}
             </form.Field>
             <form.Field
               name="message"
               validators={{
-                onSubmit: () => serverValidationErrors.message,
+                onSubmit: () => validateMessage(form.state.values.message) ?? serverValidationErrors.message,
               }}
             >
-              {(field) => (
-                <Field
-                  label="Message"
-                  name="entry"
-                  value={field.state.value}
-                  onChange={(e) => {
-                    if (serverValidationErrors.message) {
-                      setServerValidationErrors((prev) => ({ ...prev, message: undefined }));
-                    }
-                    field.handleChange(e.target.value);
-                  }}
-                  placeholder="leave a note..."
-                  multiline
-                  error={typeof field.state.meta.errors[0] === "string" ? field.state.meta.errors[0] : undefined}
-                />
-              )}
+              {(field) => {
+                const messageError =
+                  (typeof field.state.meta.errors[0] === "string"
+                    ? field.state.meta.errors[0]
+                    : undefined) ?? serverValidationErrors.message;
+                return (
+                  <Field data-invalid={!!messageError}>
+                    <FieldLabel htmlFor="guestbook-entry">Message</FieldLabel>
+                    <FieldContent>
+                      <textarea
+                        id="guestbook-entry"
+                        name="entry"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => {
+                          if (serverValidationErrors.message) {
+                            setServerValidationErrors((prev) => ({ ...prev, message: undefined }));
+                          }
+                          field.handleChange(e.target.value);
+                        }}
+                        placeholder="leave a note..."
+                        rows={3}
+                        className={cn(
+                          inputClassName,
+                          "min-h-[80px] resize-none",
+                          messageError && "border-destructive focus-visible:ring-destructive",
+                        )}
+                        aria-invalid={!!messageError}
+                      />
+                      <FieldError errors={messageError ? [{ message: messageError }] : undefined} />
+                    </FieldContent>
+                  </Field>
+                );
+              }}
             </form.Field>
           </div>
         );
@@ -289,8 +316,10 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
                       >
                         {([nameError, messageError]) => (
                           <p className="text-muted-foreground mb-3 text-sm">
-                            {(typeof nameError === "string" ? nameError : undefined) ??
-                              (typeof messageError === "string" ? messageError : undefined) ??
+                            {(typeof nameError === "string" ? nameError : serverValidationErrors.name) ??
+                              (typeof messageError === "string"
+                                ? messageError
+                                : serverValidationErrors.message) ??
                               "tnx for visiting! leave ur name and a note if u want... <3"}
                           </p>
                         )}
@@ -318,7 +347,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
                 "disabled:opacity-70",
               )}
             >
-              {loading && <Spinner />}
+              {loading && <Loader2 className="animate-spin" size={12} />}
               {isOpen || step === 3 ? buttonText : "write me a note"}
             </button>
           </div>

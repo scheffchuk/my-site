@@ -20,7 +20,7 @@ export function Note({
   return (
     <div
       className={cn(
-        "z-10 w-48 rounded-lg border border-border/20 bg-background/90 px-4 py-3 backdrop-blur-sm",
+        "z-10 w-48 rounded-lg border border-border/20 bg-background px-4 py-3 backdrop-blur-sm",
         "shadow-[0_4px_8px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1),0_16px_32px_rgba(0,0,0,0.08)]",
         className,
       )}
