@@ -17,14 +17,6 @@ export function GuestbookBoard() {
     <>
       <div
         className="relative h-dvh overflow-hidden"
-        style={{
-          backgroundColor: "var(--accent)",
-          backgroundImage: `
-            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: "2vmin 2vmin",
-        }}
       >
         <div
           className="pointer-events-none absolute inset-0 rounded-[10px]"
@@ -39,11 +31,11 @@ export function GuestbookBoard() {
         <Polaroid src="/sakura.jpg" alt="sakura" />
         <Polaroid src="/pepper.png" alt="pepper" />
 
-        <Sticker initialX={110} initialY={480}>
+        <Sticker initialX={110} initialY={380}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/envelope.png" alt="envelope" className="w-48 drop-shadow-md" draggable={false} />
         </Sticker>
-        <Sticker initialX={100} initialY={500}>
+        <Sticker initialX={100} initialY={400}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/letter.png" alt="letter" className="w-36 drop-shadow-md" draggable={false} />
         </Sticker>

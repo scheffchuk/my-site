@@ -9,7 +9,16 @@ export const metadata = {
 
 export default function GuestbookPage() {
   return (
-    <div className="relative">
+    <div className="relative"
+    style={{
+      backgroundColor: "var(--accent)",
+      backgroundImage: `
+        linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
+      `,
+      backgroundSize: "2vmin 2vmin",
+    }}
+    >
       <GuestbookBoard />
       <div className="fixed top-4 left-4 right-4 z-50 flex items-center justify-between">
         <Link
