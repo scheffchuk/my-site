@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, type PanInfo, useAnimation } from "motion/react";
-import { getRandomRotation } from "@/lib/utils";
+import { cn, getRandomRotation } from "@/lib/utils";
 import useMaxZIndex from "@/hooks/useMaxZIndex";
 
 type DragProps = {
@@ -43,7 +43,7 @@ export function Drag({ children, className, initialX, initialY }: DragProps) {
 
   return (
     <motion.div
-      className={className ?? "absolute select-none touch-none cursor-grab active:cursor-grabbing"}
+      className={cn("absolute select-none touch-none cursor-grab active:cursor-grabbing", className)}
       style={{ zIndex }}
       drag
       dragElastic={0.2}

@@ -20,7 +20,7 @@ export function DraggableNote({
   initialY,
 }: DraggableNoteProps) {
   return (
-    <Drag initialX={initialX} initialY={initialY}>
+    <Drag className="z-10 max-w-[200px]" initialX={initialX} initialY={initialY}>
       <Note name={name} content={content} signature={signature} />
     </Drag>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 
 type NoteProps = {
   name: string;
@@ -16,21 +17,27 @@ export function Note({
   className,
 }: NoteProps) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 2 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className={cn(
-        "z-10 w-48 rounded-lg border border-border/20 bg-background px-4 py-3 backdrop-blur-sm",
-        "shadow-[0_4px_8px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1),0_16px_32px_rgba(0,0,0,0.08)]",
+        "w-fit max-w-[200px] rounded-lg border border-black/10 bg-background px-1.5 pt-1.5 pb-2 backdrop-blur-[6px]",
+        "shadow-[0_4px_8px_rgba(0,0,0,0.2),0_8px_16px_rgba(0,0,0,0.2),0_16px_32px_rgba(0,0,0,0.2)]",
+        "transition-shadow duration-300 ease-out hover:shadow-md",
         className,
       )}
     >
       {signature ? (
         <div
-          className="mb-2 [&_svg]:max-h-48 [&_svg]:w-full bg-gray-200"
+          className="overflow-hidden rounded-[4px] border border-border bg-muted [&_svg]:max-h-48 [&_svg]:w-full"
           dangerouslySetInnerHTML={{ __html: signature }}
         />
       ) : null}
-      <p className="text-foreground font-medium">{name}</p>
-      <p className="text-muted-foreground mt-1 line-clamp-3 text-sm">{content}</p>
-    </div>
+      <div className="mt-1.5 w-full break-words">
+        <span className="mr-1 text-sm font-semibold text-muted-foreground">{name}</span>
+        <div className="text-base font-medium leading-tight">{content}</div>
+      </div>
+    </motion.div>
   );
 }
