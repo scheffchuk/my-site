@@ -51,8 +51,9 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
 
   const buttonText =
     step === "form" ? "Next" : step === "signature" ? "Submit" : step === "success" ? "Thanks!" : "Write me a note";
+    
   const inputClassName = cn(
-    "w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+    "w-full rounded-md border border-input bg-background px-3 py-2 text-base",
     "shadow-[rgba(0,0,0,0.06)_0px_2px_4px_0px_inset]",
     "placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
   );
