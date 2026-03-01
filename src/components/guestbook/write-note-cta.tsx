@@ -323,7 +323,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
 
   return (
     <MotionConfig transition={transition}>
-      <div ref={ref} className="fixed bottom-8 right-8 z-50">
+      <div ref={ref} className="absolute bottom-4 right-4 z-50 sm:bottom-8 sm:right-8">
         <form onSubmit={handleSubmit} aria-busy={loading}>
           <div
             ref={menuRef}

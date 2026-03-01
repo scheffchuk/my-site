@@ -9,5 +9,5 @@ export default function GuestbookLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="h-dvh overflow-hidden">{children}</div>;
+  return <div className="h-dvh overflow-hidden bg-background">{children}</div>;
 }
