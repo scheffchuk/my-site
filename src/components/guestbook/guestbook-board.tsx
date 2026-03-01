@@ -31,11 +31,11 @@ export function GuestbookBoard() {
         <Polaroid src="/sakura.jpg" alt="sakura" />
         <Polaroid src="/pepper.png" alt="pepper" />
 
-        <Sticker initialX={110} initialY={380}>
+        <Sticker initialX={110} initialY={350}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/envelope.png" alt="envelope" className="w-48 drop-shadow-md" draggable={false} />
         </Sticker>
-        <Sticker initialX={100} initialY={400}>
+        <Sticker initialX={100} initialY={370}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/letter.png" alt="letter" className="w-36 drop-shadow-md" draggable={false} />
         </Sticker>
