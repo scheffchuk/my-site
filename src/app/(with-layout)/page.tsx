@@ -25,19 +25,25 @@ export default function Home() {
         </Suspense>
         <ThemeChanger />
       </header>
-      <div className="flex flex-col gap-y-20">
-        <div>
+      <div className="flex flex-col gap-y-28">
+        <div className="pt-16">
           <h1 className="text-medium text-accent font-medium">Scheff Chuk</h1>
           <p className="text-medium text-accent/80">
             Self-taught design engineer
           </p>
         </div>
-        <div>
+        <div className="flex flex-col items-start gap-y-4">
           <p className="text-accent/80">
             I want to build things that are performant and beautiful. I believe
             building software is like composing Jazz. You must find the balance
             between order and chaos.
           </p>
+          <Link
+                href="/guestbook"
+                className="rounded-xs bg-accent transition-normal duration-150 ease-out hover:bg-accent/90 text-primary-foreground font-medium px-2 py-1 active:scale-[0.98]"
+              >
+                Leave a note
+              </Link>
         </div>
 
         <div>
