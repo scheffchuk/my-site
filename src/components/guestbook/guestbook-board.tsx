@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { GuestbookEntries, type OptimisticEntry } from "./guestbook-entries";
 import { Polaroid } from "./polaroid";
 import { Sticker } from "./sticker";
@@ -32,22 +32,21 @@ export function GuestbookBoard() {
             boxShadow: "inset 0 0 0 1.5px rgba(255,255,255,0.4)",
           }}
         />
-      <Suspense fallback={null}>
         <GuestbookEntries optimisticEntries={optimisticEntries} />
 
-        <Polaroid src="/odycell-logo.png" alt="photo 1" initialX={200} initialY={100} />
-        <Polaroid src="/meandsushi.png" alt="photo 2" initialX={900} initialY={300} />
-        <Polaroid src="/Halftone Dots@2x.png" alt="photo 3" initialX={500} initialY={600} />
+        <Polaroid src="/kanichan.jpg" alt="kanichan" initialX={200} initialY={100} />
+        <Polaroid src="/portrait.jpg" alt="portrait" />
+        <Polaroid src="/sakura.jpg" alt="sakura" />
+        <Polaroid src="/pepper.png" alt="pepper" />
 
+        <Sticker initialX={110} initialY={480}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/envelope.png" alt="envelope" className="w-48 drop-shadow-md" draggable={false} />
+        </Sticker>
         <Sticker initialX={100} initialY={500}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/odycell-logo.svg" alt="Odycell" className="w-48 rounded-sm" draggable={false} />
+          <img src="/letter.png" alt="letter" className="w-36 drop-shadow-md" draggable={false} />
         </Sticker>
-        <Sticker initialX={1100} initialY={150}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/vercel.svg" alt="File" className="w-16" draggable={false} />
-        </Sticker>
-        </Suspense>
       </div>
       <WriteNoteCTA onEntryCreated={handleEntryCreated} />
     </>

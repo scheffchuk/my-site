@@ -58,14 +58,14 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
   );
   const validateName = (value: string) => {
     const trimmed = value.trim();
-    if (!trimmed) return "pls fill out all fields";
-    if (trimmed.length > 50) return "ur name is too long";
+    if (!trimmed) return "Pls fill out all fields";
+    if (trimmed.length > 50) return "Your name is too long.";
     return undefined;
   };
   const validateMessage = (value: string) => {
     const trimmed = value.trim();
-    if (!trimmed) return "pls fill out all fields";
-    if (trimmed.length > 200) return "love ur long entry, but can u make it shorter?";
+    if (!trimmed) return "Pls fill out all fields";
+    if (trimmed.length > 200) return "Thanks for the words, but can you make it shorter?";
     return undefined;
   };
 
@@ -245,7 +245,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
                           clearServerError("name");
                           field.handleChange(e.target.value);
                         }}
-                        placeholder="ur name..."
+                        placeholder="Your name..."
                         autoComplete="name"
                         className={cn(inputClassName, nameError && "border-destructive focus-visible:ring-destructive")}
                         aria-invalid={!!nameError}
@@ -283,7 +283,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
                             void handleClick();
                           }
                         }}
-                        placeholder="leave a note..."
+                        placeholder="Leave a note..."
                         rows={3}
                         className={cn(
                           inputClassName,
@@ -311,7 +311,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
               onClick={() => signatureRef.current?.clear?.()}
               className="text-muted-foreground hover:text-foreground text-sm"
             >
-              clear
+              Clear
             </button>
           </div>
         );
@@ -351,15 +351,14 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
                               (typeof messageError === "string"
                                 ? messageError
                                 : serverValidationErrors.message) ??
-                              "tnx for visiting! leave ur name and a note if u want... <3"}
+                              "Thanks for visiting! Leave your name and a note if you like."}
                           </p>
                         )}
                       </form.Subscribe>
                     )}
                     {step === "signature" && (
                       <p className="text-muted-foreground mb-3 text-sm">
-                        why not a little drawing as well!{" "}
-                        <span className="font-medium">be creative!!</span>
+                        Why not a little drawing as well!
                       </p>
                     )}
                     {stepContent()}
