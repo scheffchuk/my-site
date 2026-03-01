@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function GuestbookPage() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative">
       <GuestbookBoard />
       <div className="fixed top-4 left-4 right-4 z-50 flex items-center justify-between">
         <Link

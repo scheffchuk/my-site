@@ -16,7 +16,7 @@ export function GuestbookBoard() {
   return (
     <>
       <div
-        className="relative min-h-screen overflow-hidden"
+        className="relative h-dvh overflow-hidden"
         style={{
           backgroundColor: "var(--accent)",
           backgroundImage: `
