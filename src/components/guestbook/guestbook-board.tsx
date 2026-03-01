@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { GuestbookEntries, type OptimisticEntry } from "./guestbook-entries";
+import { Polaroid } from "./polaroid";
+import { Sticker } from "./sticker";
 import { WriteNoteCTA } from "./write-note-cta";
 
 export function GuestbookBoard() {
@@ -32,6 +34,21 @@ export function GuestbookBoard() {
         />
 
         <GuestbookEntries optimisticEntries={optimisticEntries} />
+
+        {/* Polaroids -- swap src with your own images */}
+        <Polaroid src="/odycell-logo.png" alt="photo 1" initialX={200} initialY={100} />
+        <Polaroid src="/placeholder.jpg" alt="photo 2" initialX={900} initialY={300} />
+        <Polaroid src="/placeholder.jpg" alt="photo 3" initialX={500} initialY={600} />
+
+        {/* Stickers -- swap children with your own SVGs / images */}
+        <Sticker initialX={100} initialY={500}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/odycell-logo.png" alt="Odycell" className="w-48" draggable={false} />
+        </Sticker>
+        <Sticker initialX={1100} initialY={150}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/vercel.svg" alt="File" className="w-16" draggable={false} />
+        </Sticker>
       </div>
       <WriteNoteCTA onEntryCreated={handleEntryCreated} />
     </>

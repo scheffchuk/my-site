@@ -6,8 +6,6 @@ type NoteProps = {
   name: string;
   content: string;
   signature?: string;
-  initialX?: number;
-  initialY?: number;
   className?: string;
 };
 

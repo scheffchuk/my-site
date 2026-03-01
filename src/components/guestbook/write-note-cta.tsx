@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import { useForm } from "@tanstack/react-form-nextjs";
 import { api } from "../../../convex/_generated/api";
 import useClickOutside from "@/hooks/useClickOutside";
@@ -20,18 +20,21 @@ const transition = {
   duration: 0.25,
 } as const;
 
+type Step = "idle" | "form" | "signature" | "success";
+type ServerValidationErrors = {
+  name?: string;
+  message?: string;
+};
+
 type WriteNoteCTAProps = {
   onEntryCreated: (entry: OptimisticEntry) => void;
 };
 
 export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState<Step>("idle");
   const [contentRef, { height: heightContent }] = useMeasure();
-  const [menuRef, { width: widthContainer }] = useMeasure();
-  const [serverValidationErrors, setServerValidationErrors] = useState<{
-    name?: string;
-    message?: string;
-  }>({});
+  const [menuRef] = useMeasure();
+  const [serverValidationErrors, setServerValidationErrors] = useState<ServerValidationErrors>({});
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -46,7 +49,8 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
     },
   });
 
-  const buttonText = ["Write me a note", "Next", "Submit", "Thanks!"][step];
+  const buttonText =
+    step === "form" ? "Next" : step === "signature" ? "Submit" : step === "success" ? "Thanks!" : "Write me a note";
   const inputClassName = cn(
     "w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
     "shadow-[rgba(0,0,0,0.06)_0px_2px_4px_0px_inset]",
@@ -66,10 +70,21 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
   };
 
   useEffect(() => {
-    if (step !== 3) return;
-    const timer = setTimeout(() => setStep(0), 2000);
+    if (step !== "success") return;
+    const timer = setTimeout(() => setStep("idle"), 2000);
     return () => clearTimeout(timer);
   }, [step]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isOpen]);
 
   const captureSignature = (): string | null => {
     const svgEl = signatureRef.current?.svg?.cloneNode(true) as SVGSVGElement | undefined;
@@ -86,107 +101,127 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
   const getRandomPosition = (min: number, max: number) =>
     Math.random() * (max - min) + min;
 
+  const clearServerErrors = () => setServerValidationErrors({});
+  const setServerErrors = (errors?: Record<string, string[]>) => {
+    setServerValidationErrors({
+      name: errors?.name?.[0],
+      message: errors?.message?.[0],
+    });
+  };
+  const clearServerError = (field: keyof ServerValidationErrors) => {
+    setServerValidationErrors((prev) => {
+      if (!prev[field]) return prev;
+      return { ...prev, [field]: undefined };
+    });
+  };
+  const getTrimmedValues = () => {
+    const { name, message } = form.state.values;
+    return { name: name.trim(), message: message.trim() };
+  };
+  const openFlow = () => {
+    setIsOpen(true);
+    setStep("form");
+  };
+  const validateStep = async () => {
+    const { name, message } = getTrimmedValues();
+    const clientNameError = validateName(name);
+    const clientMessageError = validateMessage(message);
+    if (clientNameError || clientMessageError) {
+      clearServerErrors();
+      await Promise.all([form.validateField("name", "submit"), form.validateField("message", "submit")]);
+      return false;
+    }
+
+    setLoading(true);
+    const result = await moderateAndCreate({
+      name,
+      message,
+      validateOnly: true,
+    });
+    setLoading(false);
+    if (!result.success) {
+      setServerErrors(result.errors);
+      return false;
+    }
+    clearServerErrors();
+    return true;
+  };
+  const submitStep = async () => {
+    setLoading(true);
+    const sig = captureSignature();
+    if (!sig) {
+      setLoading(false);
+      return;
+    }
+
+    const localEntryId = crypto.randomUUID();
+    const { name, message } = getTrimmedValues();
+    const result = await moderateAndCreate({
+      name,
+      message,
+      signature: sig,
+      localEntryId,
+    });
+
+    if (!result.success) {
+      setServerErrors(result.errors);
+      setLoading(false);
+      return;
+    }
+
+    const initialX = getRandomPosition(100, typeof window !== "undefined" ? window.innerWidth - 150 : 800);
+    const initialY = getRandomPosition(100, typeof window !== "undefined" ? window.innerHeight - 150 : 600);
+
+    onEntryCreated({
+      id: crypto.randomUUID(),
+      localEntryId,
+      name,
+      message,
+      signature: sig,
+      initialX,
+      initialY,
+    });
+
+    setStep("success");
+    setIsOpen(false);
+    setLoading(false);
+    clearServerErrors();
+    form.reset();
+    signatureRef.current?.clear?.();
+  };
   const handleClick = async () => {
-    const clearServerErrors = () => setServerValidationErrors({});
-    const setServerErrors = (errors?: Record<string, string[]>) => {
-      setServerValidationErrors({
-        name: errors?.name?.[0],
-        message: errors?.message?.[0],
-      });
-    };
-    if (step === 3) {
-      setStep(0);
+    if (loading) return;
+    if (step === "success") {
+      setStep("idle");
       return;
     }
-
-    if (!isOpen && step === 0) {
-      setIsOpen(true);
-      setStep(1);
-      return;
-    }
-
     if (!isOpen) {
-      setIsOpen(true);
+      openFlow();
       return;
     }
-
-    if (step === 1) {
-      const { name, message } = form.state.values;
-      const clientNameError = validateName(name);
-      const clientMessageError = validateMessage(message);
-      if (clientNameError || clientMessageError) {
-        clearServerErrors();
-        await Promise.all([form.validateField("name", "submit"), form.validateField("message", "submit")]);
-        return;
-      }
-
-      setLoading(true);
-      const result = await moderateAndCreate({
-        name: name.trim(),
-        message: message.trim(),
-        validateOnly: true,
-      });
-      setLoading(false);
-      if (!result.success) {
-        setServerErrors(result.errors);
-        return;
-      }
-      clearServerErrors();
-    }
-
-    if (step === 2) {
-      setLoading(true);
-      const sig = captureSignature();
-      if (!sig) {
-        setLoading(false);
-        return;
-      }
-
-      const localEntryId = crypto.randomUUID();
-      const { name, message } = form.state.values;
-      const result = await moderateAndCreate({
-        name: name.trim(),
-        message: message.trim(),
-        signature: sig,
-        localEntryId,
-      });
-
-      if (!result.success) {
-        setServerErrors(result.errors);
-        setLoading(false);
-        return;
-      }
-
-      const initialX = getRandomPosition(100, typeof window !== "undefined" ? window.innerWidth - 150 : 800);
-      const initialY = getRandomPosition(100, typeof window !== "undefined" ? window.innerHeight - 150 : 600);
-
-      onEntryCreated({
-        id: crypto.randomUUID(),
-        localEntryId,
-        name: name.trim(),
-        message: message.trim(),
-        signature: sig,
-        initialX,
-        initialY,
-      });
-
-      setStep(3);
-      setIsOpen(false);
-      setLoading(false);
-      clearServerErrors();
-      form.reset();
-      signatureRef.current?.clear?.();
+    if (step === "form") {
+      const isValid = await validateStep();
+      if (!isValid) return;
+      setStep("signature");
       return;
     }
-
-    setStep((prev) => prev + 1);
+    if (step === "signature") {
+      await submitStep();
+    }
+  };
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    void handleClick();
   };
 
   useClickOutside(ref, () => setIsOpen(false));
 
+  const getFieldError = (formError: unknown, serverError?: string) =>
+    (typeof formError === "string" ? formError : undefined) ?? serverError;
+
   const stepContent = () => {
     switch (step) {
-      case 1:
+      case "form":
         return (
           <div className="space-y-3">
             <form.Field
@@ -196,23 +231,18 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
               }}
             >
               {(field) => {
-                const nameError =
-                  (typeof field.state.meta.errors[0] === "string"
-                    ? field.state.meta.errors[0]
-                    : undefined) ?? serverValidationErrors.name;
+                const nameError = getFieldError(field.state.meta.errors[0], serverValidationErrors.name);
                 return (
                   <Field data-invalid={!!nameError}>
                     <FieldLabel htmlFor="guestbook-created-by">Name</FieldLabel>
                     <FieldContent>
                       <input
                         id="guestbook-created-by"
-                        name="created_by"
+                        name="name"
                         value={field.state.value}
                         onBlur={field.handleBlur}
                         onChange={(e) => {
-                          if (serverValidationErrors.name) {
-                            setServerValidationErrors((prev) => ({ ...prev, name: undefined }));
-                          }
+                          clearServerError("name");
                           field.handleChange(e.target.value);
                         }}
                         placeholder="ur name..."
@@ -233,24 +263,25 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
               }}
             >
               {(field) => {
-                const messageError =
-                  (typeof field.state.meta.errors[0] === "string"
-                    ? field.state.meta.errors[0]
-                    : undefined) ?? serverValidationErrors.message;
+                const messageError = getFieldError(field.state.meta.errors[0], serverValidationErrors.message);
                 return (
                   <Field data-invalid={!!messageError}>
                     <FieldLabel htmlFor="guestbook-entry">Message</FieldLabel>
                     <FieldContent>
                       <textarea
                         id="guestbook-entry"
-                        name="entry"
+                        name="message"
                         value={field.state.value}
                         onBlur={field.handleBlur}
                         onChange={(e) => {
-                          if (serverValidationErrors.message) {
-                            setServerValidationErrors((prev) => ({ ...prev, message: undefined }));
-                          }
+                          clearServerError("message");
                           field.handleChange(e.target.value);
+                        }}
+                        onKeyDown={(e) => {
+                          if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+                            e.preventDefault();
+                            void handleClick();
+                          }
                         }}
                         placeholder="leave a note..."
                         rows={3}
@@ -269,7 +300,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
             </form.Field>
           </div>
         );
-      case 2:
+      case "signature":
         return (
           <div className="space-y-2">
             <div className="border border-input bg-background">
@@ -292,7 +323,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
   return (
     <MotionConfig transition={transition}>
       <div ref={ref} className="fixed bottom-8 right-8 z-50">
-        <form>
+        <form onSubmit={handleSubmit} aria-busy={loading}>
           <div
             ref={menuRef}
             className="w-72 overflow-hidden rounded-lg border border-border bg-background/95 shadow-lg backdrop-blur-sm"
@@ -307,7 +338,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
                   className="overflow-hidden"
                 >
                   <div ref={contentRef} className="p-4">
-                    {step === 1 && (
+                    {step === "form" && (
                       <form.Subscribe
                         selector={(state) => [
                           state.fieldMeta.name?.errors?.[0],
@@ -325,7 +356,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
                         )}
                       </form.Subscribe>
                     )}
-                    {step === 2 && (
+                    {step === "signature" && (
                       <p className="text-muted-foreground mb-3 text-sm">
                         why not a little drawing as well!{" "}
                         <span className="font-medium">be creative!!</span>
@@ -338,17 +369,17 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
             </AnimatePresence>
 
             <button
-              type="button"
-              onClick={handleClick}
+              type="submit"
               disabled={loading}
+              aria-busy={loading}
               className={cn(
                 "inline-flex w-full items-center justify-center gap-2 px-4 py-3 text-sm font-medium",
                 "hover:bg-accent/10 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
                 "disabled:opacity-70",
               )}
             >
-              {loading && <Loader2 className="animate-spin" size={12} />}
-              {isOpen || step === 3 ? buttonText : "write me a note"}
+              {loading && <Loader2 className="animate-spin" size={12} aria-hidden />}
+              {isOpen || step === "success" ? buttonText : "write me a note"}
             </button>
           </div>
         </form>

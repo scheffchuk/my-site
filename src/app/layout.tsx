@@ -1,6 +1,5 @@
 import "./globals.css";
 
-import localFont from "next/font/local";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
@@ -10,12 +9,6 @@ import { ConvexClientProvider } from "@/lib/ConvexClientProvider";
 
 const geist = Geist({
   subsets: ["latin"],
-});
-
-const paperMono = localFont({
-  src: "../assets/PaperMono-Regular.woff2",
-  style: "normal",
-  display: "swap",
 });
 
 export const metadata = {
