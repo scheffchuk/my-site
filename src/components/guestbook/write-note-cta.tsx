@@ -305,7 +305,10 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
         return (
           <div className="space-y-2">
             <div className="border border-input bg-background">
-              <Signature ref={signatureRef} />
+              <Signature ref={signatureRef} options={{
+                size:8,
+                thinning: 0.25,
+              }} />
             </div>
             <button
               type="button"
