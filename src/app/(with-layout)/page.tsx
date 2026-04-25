@@ -13,22 +13,25 @@ const links = [
   { href: "/guestbook", label: "Guestbook" },
 ];
 
-const linkClassName =
+const baseLinkClassName =
   "rounded-sm transition-all duration-150 ease-out hover:opacity-70 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
+
+const isExternal = (href: string) =>
+  href.startsWith("http") || href.startsWith("mailto:");
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       <header className="flex items-center justify-between gap-x-4 py-4">
-        <Suspense fallback={<div className="text-accent/80 text-sm">Hi there</div>}>
+        <Suspense fallback={<div className="h-5 w-40 animate-pulse rounded bg-accent/10" />}>
           <TokyoWeatherTime />
         </Suspense>
         <ThemeChanger />
       </header>
       <div className="flex flex-col gap-y-28">
         <div className="pt-16">
-          <h1 className="text-medium text-accent font-medium">Scheff Chuk</h1>
-          <p className="text-medium text-accent/80">
+          <h1 className="text-2xl text-accent font-semibold tracking-tight">Scheff Chuk</h1>
+          <p className="text-base text-accent/70">
             Self-taught design engineer
           </p>
         </div>
@@ -46,39 +49,45 @@ export default function Home() {
               </Link>
         </div>
 
-        <div>
-          <ProjectCard
-            title="My site"
-            description="My portfolio and playground."
-            websiteUrl="https://scheff.dev"
-          />
-          <ProjectCard
-            title="HeadSalon"
-            description="A blog web app for my favorite writer, WhigZhou."
-            websiteUrl="https://headsalon.vercel.app/"
-          />
-          <ProjectCard
-            title="ODY CELL"
-            description="A marketing site for a book store in Tokyo I am currently working on."
-            websiteUrl="https://odycell.space/"
-          />
+        <div className="flex flex-col gap-y-1">
+          <h2 className="text-lg text-accent font-medium">Projects</h2>
+          <div className="flex flex-col">
+            <ProjectCard
+              title="My site"
+              description="My portfolio and playground."
+              websiteUrl="https://scheff.dev"
+            />
+            <ProjectCard
+              title="HeadSalon"
+              description="A blog web app for my favorite writer, WhigZhou."
+              websiteUrl="https://headsalon.vercel.app/"
+            />
+            <ProjectCard
+              title="ODY CELL"
+              description="A marketing site for a book store in Tokyo I am currently working on."
+              websiteUrl="https://odycell.space/"
+            />
+          </div>
         </div>
 
         <div>
-          <h2 className="text-medium text-accent font-medium">Links</h2>
+          <h2 className="text-lg text-accent font-medium">Links</h2>
           <div className="text-accent/80 flex flex-wrap gap-x-4 py-2">
-            {links.map(({ href, label }) => (
-              <Link
-                key={label}
-                href={href}
-                className={linkClassName}
-                {...(href.startsWith("http") || href.startsWith("mailto:")
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-              >
-                {label}
-              </Link>
-            ))}
+            {links.map(({ href, label }) => {
+              const external = isExternal(href);
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  className={`${baseLinkClassName} ${external ? "underline underline-offset-4 decoration-accent/30 hover:decoration-accent/60" : ""}`}
+                  {...(external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </div>
         </div>
         <Footer />

@@ -23,8 +23,8 @@ export function Note({
       transition={{ duration: 0.3, ease: "easeOut" }}
       className={cn(
         "w-fit max-w-36 rounded-lg border border-black/10 bg-background px-1.5 pt-1.5 pb-2 backdrop-blur-[6px]",
-        "shadow-[0_4px_8px_rgba(0,0,0,0.2),0_8px_16px_rgba(0,0,0,0.2),0_16px_32px_rgba(0,0,0,0.2)]",
-        "transition-shadow duration-300 ease-out hover:shadow-md",
+        "shadow-md",
+        "transition-shadow duration-300 ease-out hover:shadow-[0_4px_8px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.15),0_16px_32px_rgba(0,0,0,0.15)]",
         className,
       )}
     >

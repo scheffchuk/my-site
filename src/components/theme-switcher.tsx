@@ -21,14 +21,10 @@ const ThemeChanger = () => {
         onClick={toggleTheme}
         variant="accent"
         size="compact"
-        className="py-1 px-1 h-full"
+        className="h-full px-1 py-1"
         aria-label="Change theme"
       >
-        <PaintRoller
-          className="shrink-0"
-          size={12}
-          aria-hidden={true}
-        />
+        <PaintRoller className="shrink-0" size={12} aria-hidden={true} />
       </Button>
     </div>
   );

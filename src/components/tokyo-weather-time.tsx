@@ -12,7 +12,10 @@ export function TokyoWeatherTime() {
     gcTime: 900000, // Keep in cache for 15 minutes (15 * 60 * 1000)
   });
 
-  if (!data) return <div className="text-accent text-sm opacity-50">Loading weather...</div>;
+  if (!data)
+    return (
+      <div className="text-accent text-sm opacity-50">Loading weather...</div>
+    );
 
   return (
     <div className="text-accent text-sm">

@@ -22,9 +22,7 @@ export function GuestbookEntries({ optimisticEntries }: GuestbookEntriesProps) {
   const serverEntries = useQuery(api.guestbook.getApprovedEntries) ?? [];
 
   const approvedLocalIds = new Set(
-    serverEntries
-      .map((e) => e.localEntryId)
-      .filter((id): id is string => !!id),
+    serverEntries.map((e) => e.localEntryId).filter((id): id is string => !!id),
   );
 
   const localOnly = optimisticEntries.filter(
