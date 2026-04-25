@@ -8,20 +8,16 @@ interface ProjectCardProps {
   websiteUrl: string;
 }
 
-const ProjectCard = ({
-  title,
-  description,
-  websiteUrl,
-}: ProjectCardProps) => {
+const ProjectCard = ({ title, description, websiteUrl }: ProjectCardProps) => {
   return (
-    <Link href={websiteUrl} target="_blank" rel="noopener noreferrer" className="-mx-2 p-2 flex flex-col hover:bg-accent/10 rounded-sm">
-      
-      <h3 className="font-medium text-accent">
-        {title}
-      </h3>
-      <p className="text-accent/80">
-        {description}
-      </p>
+    <Link
+      href={websiteUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:bg-accent/10 -mx-2 flex flex-col rounded-sm p-2"
+    >
+      <h3 className="text-accent">{title}</h3>
+      <p className="text-accent/80">{description}</p>
     </Link>
   );
 };

@@ -23,35 +23,39 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <header className="flex items-center justify-between gap-x-4 py-4">
-        <Suspense fallback={<div className="h-5 w-40 animate-pulse rounded bg-accent/10" />}>
+        <Suspense
+          fallback={
+            <div className="bg-accent/10 h-5 w-40 animate-pulse rounded" />
+          }
+        >
           <TokyoWeatherTime />
         </Suspense>
         <ThemeChanger />
       </header>
       <div className="flex flex-col gap-y-28">
         <div className="pt-16">
-          <h1 className="text-2xl text-accent font-semibold tracking-tight">Scheff Chuk</h1>
-          <p className="text-base text-accent/70">
-            Self-taught design engineer
-          </p>
+          <h1 className="text-accent font-medium tracking-tight">
+            Scheff Chuk
+          </h1>
+          <p className="text-accent/70">Self-taught design engineer</p>
         </div>
         <div className="flex flex-col items-start gap-y-4">
-          <p className="text-accent/80">
-            I want to build things that are performant and beautiful. I believe
-            building software is like composing Jazz. You must find the balance
-            between order and chaos.
+          <h2 className="text-accent font-medium">Today</h2>
+          <p className="text-accent/80 text-balance">
+            I am learning to build things that are beautiful and performant.
+            Leave me a note if you feel like it!
           </p>
           <Link
-                href="/guestbook"
-                className="rounded-xs bg-accent transition-normal duration-150 ease-out hover:bg-accent/90 text-primary-foreground font-medium px-2 py-1 active:scale-[0.98]"
-              >
-                Leave a note
-              </Link>
+            href="/guestbook"
+            className="bg-accent hover:bg-accent/90 text-primary-foreground rounded-xs px-2 py-1 font-medium transition-normal duration-150 ease-out active:scale-[0.98]"
+          >
+            Leave a note
+          </Link>
         </div>
 
-        <div className="flex flex-col gap-y-1">
-          <h2 className="text-lg text-accent font-medium">Projects</h2>
-          <div className="flex flex-col">
+        <div className="flex flex-col gap-y-4">
+          <h2 className="text-accent font-medium">Projects</h2>
+          <div className="flex flex-col gap-y-4">
             <ProjectCard
               title="My site"
               description="My portfolio and playground."
@@ -64,14 +68,14 @@ export default function Home() {
             />
             <ProjectCard
               title="ODY CELL"
-              description="A marketing site for a book store in Tokyo I am currently working on."
+              description="A marketing site for a book store in Tokyo."
               websiteUrl="https://odycell.space/"
             />
           </div>
         </div>
 
         <div>
-          <h2 className="text-lg text-accent font-medium">Links</h2>
+          <h2 className="text-accent font-medium">Links</h2>
           <div className="text-accent/80 flex flex-wrap gap-x-4 py-2">
             {links.map(({ href, label }) => {
               const external = isExternal(href);
@@ -79,7 +83,7 @@ export default function Home() {
                 <Link
                   key={label}
                   href={href}
-                  className={`${baseLinkClassName} ${external ? "underline underline-offset-4 decoration-accent/30 hover:decoration-accent/60" : ""}`}
+                  className={`${baseLinkClassName} ${external ? "decoration-accent/30 hover:decoration-accent/60 underline underline-offset-4" : ""}`}
                   {...(external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
