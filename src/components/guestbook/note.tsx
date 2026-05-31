@@ -36,7 +36,7 @@ export function Note({
       ) : null}
       <div className="mt-1.5 w-full wrap-break-word">
         <span className="mr-1 text-sm font-semibold text-neutral-500">{name}</span>
-        <div className="text-base font-medium leading-tight">{content}</div>
+        <div className="text-sm font-medium leading-tight">{content}</div>
       </div>
     </motion.div>
   );
