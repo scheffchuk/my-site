@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AppearanceSwitcher } from "@/components/appearance-switcher";
 import ThemeChanger from "@/components/theme-switcher";
 import { ProjectCard } from "@/components/project-card";
 import Footer from "@/components/footer";
@@ -14,7 +15,7 @@ const links = [
 ];
 
 const baseLinkClassName =
-  "rounded-sm transition-all duration-150 ease-out hover:opacity-70 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
+  "text-accent-chrome rounded-sm transition-all duration-150 ease-out hover:opacity-70 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
 
 const isExternal = (href: string) =>
   href.startsWith("http") || href.startsWith("mailto:");
@@ -25,23 +26,26 @@ export default function Home() {
       <header className="flex items-center justify-between gap-x-4 py-4">
         <Suspense
           fallback={
-            <div className="bg-accent/10 h-5 w-40 animate-pulse rounded" />
+            <div className="bg-accent/10 dark:bg-muted h-5 w-40 animate-pulse rounded" />
           }
         >
           <TokyoWeatherTime />
         </Suspense>
-        <ThemeChanger />
+        <div className="flex items-center gap-1">
+          <AppearanceSwitcher />
+          <ThemeChanger />
+        </div>
       </header>
       <div className="flex flex-col gap-y-28">
         <div className="pt-16">
-          <h1 className="text-accent font-medium tracking-tight">
+          <h1 className="text-accent-chrome font-medium tracking-tight">
             Scheff Chuk
           </h1>
-          <p className="text-accent/70">Self-taught design engineer</p>
+          <p className="text-accent-chrome-muted">Self-taught design engineer</p>
         </div>
         <div className="flex flex-col items-start gap-y-4">
-          <h2 className="text-accent font-medium">Today</h2>
-          <p className="text-accent/80 text-balance">
+          <h2 className="text-accent-chrome font-medium">Today</h2>
+          <p className="text-accent-chrome-muted text-balance">
             I am learning to build things that are beautiful and performant.
             Leave me a note if you feel like it!
           </p>
@@ -54,7 +58,7 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col gap-y-4">
-          <h2 className="text-accent font-medium">Projects</h2>
+          <h2 className="text-accent-chrome font-medium">Projects</h2>
           <div className="flex flex-col gap-y-4">
             <ProjectCard
               title="My site"
@@ -75,8 +79,8 @@ export default function Home() {
         </div>
 
         <div>
-          <h2 className="text-accent font-medium">Links</h2>
-          <div className="text-accent/80 flex flex-wrap gap-x-4 py-2">
+          <h2 className="text-accent-chrome font-medium">Links</h2>
+          <div className="text-accent-chrome flex flex-wrap gap-x-4 py-2">
             {links.map(({ href, label }) => {
               const external = isExternal(href);
               return (

@@ -7,18 +7,20 @@ export function TokyoWeatherTime() {
   const { data } = useQuery({
     queryKey: ["tokyo-weather-time"],
     queryFn: fetchTokyoWeatherTime,
-    refetchInterval: 60000, // Update every minute
-    staleTime: 60000, // Consider data stale after 1 minute
-    gcTime: 900000, // Keep in cache for 15 minutes (15 * 60 * 1000)
+    refetchInterval: 60000,
+    staleTime: 60000,
+    gcTime: 900000,
   });
 
   if (!data)
     return (
-      <div className="text-accent text-sm opacity-50">Loading weather...</div>
+      <div className="text-accent-chrome-muted text-sm opacity-50">
+        Loading weather...
+      </div>
     );
 
   return (
-    <div className="text-accent text-sm">
+    <div className="text-accent-chrome-muted text-sm">
       {data.city} · {data.temperature}°C · {data.time}
     </div>
   );

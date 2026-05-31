@@ -3,7 +3,10 @@ import "./globals.css";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
+import { AccentProvider } from "@/components/accent-provider";
+import { ThemeColorMeta } from "@/components/theme-color-meta";
 import { cn } from "@/lib/utils";
+import { accentBlockingScript } from "@/lib/accent-blocking-script";
 import { QueryClientProviderWrapper } from "@/lib/query-client";
 import { ConvexClientProvider } from "@/lib/ConvexClientProvider";
 
@@ -23,19 +26,30 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth!" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="scroll-smooth!"
+      data-accent="blue"
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: accentBlockingScript }} />
+      </head>
       <body className={cn(geist.className)}>
         <ConvexClientProvider>
           <QueryClientProviderWrapper>
             <ThemeProvider
-              attribute="data-theme"
-              defaultTheme="darkBlue"
-              enableSystem={false}
-              storageKey="color-theme"
-              disableTransitionOnChange={false}
-              themes={["red", "green", "darkBlue"]}
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              storageKey="appearance"
+              disableTransitionOnChange
+              themes={["light", "dark", "system"]}
             >
-              {children}
+              <AccentProvider>
+                <ThemeColorMeta />
+                {children}
+              </AccentProvider>
             </ThemeProvider>
           </QueryClientProviderWrapper>
         </ConvexClientProvider>
