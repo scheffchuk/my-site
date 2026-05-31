@@ -331,7 +331,10 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
         <form onSubmit={handleSubmit} aria-busy={loading}>
           <div
             ref={menuRef}
-            className="w-72 overflow-hidden rounded-lg border border-border bg-background/95 shadow-lg backdrop-blur-sm"
+            className={cn(
+              "w-72 overflow-hidden rounded-lg border border-border bg-background/95 shadow-lg backdrop-blur-sm",
+              step === "signature" && "touch-none overscroll-none select-none",
+            )}
           >
             <AnimatePresence initial={false} mode="sync">
               {isOpen ? (
