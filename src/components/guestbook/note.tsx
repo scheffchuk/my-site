@@ -34,7 +34,7 @@ export function Note({
           dangerouslySetInnerHTML={{ __html: signature }}
         />
       ) : null}
-      <div className="mt-1.5 w-full break-words">
+      <div className="mt-1.5 w-full wrap-break-word">
         <span className="mr-1 text-sm font-semibold text-muted-foreground">{name}</span>
         <div className="text-base font-medium leading-tight">{content}</div>
       </div>

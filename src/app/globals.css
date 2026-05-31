@@ -81,8 +81,9 @@
 @layer utilities {
   /* Theme-specific color schemes */
   [data-theme="green"] {
-    --accent: hsl(118, 47%, 13%);
-    --primary: hsl(118, 47%, 13%);
+    --british-racing-green: oklch(0.333593 0.079456 156.9814);
+    --accent: var(--british-racing-green);
+    --primary: var(--british-racing-green);
     --primary-foreground: hsl(0, 0%, 98%);
   }
 

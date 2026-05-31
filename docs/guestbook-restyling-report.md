@@ -40,13 +40,13 @@ Drag logic (motion.div, z-index, random rotation, spring-based rotation on drag 
 | Signature area | Plain `bg-gray-200` | Bordered container: `border border-border bg-muted rounded-[4px] overflow-hidden` |
 | Name | `text-foreground font-medium` | `text-sm font-semibold text-muted-foreground` |
 | Content | `text-sm text-muted-foreground` | `text-base font-medium leading-tight` |
-| Layout | Separate `<p>` tags | Single `break-words` wrapper with inline name |
+| Layout | Separate `<p>` tags | Single `wrap-break-word` wrapper with inline name |
 
 ### 3. Polaroid restyling (`polaroid.tsx`)
 
 | Property | Before | After (matches reference) |
 |----------|--------|---------------------------|
-| Size | Fixed `125x160px`, then `w-48` | `w-48` with `aspect-[4/5]` image area |
+| Size | Fixed `125x160px`, then `w-48` | `w-48` with `aspect-4/5` image area |
 | Padding | `p-1.5 pb-8` | `p-1 pb-6` (exact reference ratio) |
 | Background | `bg-neutral-100` | `bg-background` (theme-aware) |
 | Hover shadow | Custom heavier shadow | `transition-shadow duration-300 ease-out hover:shadow-md` |
