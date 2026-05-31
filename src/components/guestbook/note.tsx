@@ -30,7 +30,7 @@ export function Note({
     >
       {signature ? (
         <div
-          className="overflow-hidden rounded-[4px] border border-border bg-muted [&_svg]:max-h-48 [&_svg]:w-full"
+          className="relative flex items-center justify-center overflow-hidden rounded-[4px] border border-border bg-muted [&_svg]:h-28 [&_svg]:w-full"
           dangerouslySetInnerHTML={{ __html: signature }}
         />
       ) : null}

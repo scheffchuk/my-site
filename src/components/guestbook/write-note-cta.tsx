@@ -90,8 +90,9 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
   const captureSignature = (): string | null => {
     const svgEl = signatureRef.current?.svg?.cloneNode(true) as SVGSVGElement | undefined;
     if (!svgEl) return null;
-    const w = signatureRef.current?.svg?.clientWidth ?? 200;
-    const h = signatureRef.current?.svg?.clientHeight ?? 80;
+    const w = signatureRef.current?.svg?.clientWidth;
+    const h = signatureRef.current?.svg?.clientHeight;
+    if (!w || !h) return null;
     svgEl.removeAttribute("style");
     svgEl.setAttribute("width", `${w}px`);
     svgEl.setAttribute("height", `${h}px`);
@@ -304,9 +305,9 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
       case "signature":
         return (
           <div className="space-y-2">
-            <div className="border border-input bg-background">
+            <div className="relative flex h-36 w-full flex-col overflow-hidden rounded-md border border-input bg-background">
               <Signature ref={signatureRef} options={{
-                size:8,
+                size: 10,
                 thinning: 0.25,
               }} />
             </div>
