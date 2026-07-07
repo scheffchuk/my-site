@@ -3,8 +3,6 @@ import { AppearanceSwitcher } from "@/components/appearance-switcher";
 import ThemeChanger from "@/components/theme-switcher";
 import { ProjectCard } from "@/components/project-card";
 import Footer from "@/components/footer";
-import { TokyoWeatherTime } from "@/components/tokyo-weather-time";
-import { Suspense } from "react";
 
 const links = [
   { href: "mailto:hi@scheff.dev", label: "Mail" },
@@ -23,14 +21,7 @@ const isExternal = (href: string) =>
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <header className="flex items-center justify-between gap-x-4 py-4">
-        <Suspense
-          fallback={
-            <div className="bg-accent/10 dark:bg-muted h-5 w-40 animate-pulse rounded" />
-          }
-        >
-          <TokyoWeatherTime />
-        </Suspense>
+      <header className="flex items-center justify-end gap-x-4 py-4">
         <div className="flex items-center gap-1">
           <AppearanceSwitcher />
           <ThemeChanger />
