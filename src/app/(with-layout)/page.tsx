@@ -4,19 +4,8 @@ import ThemeChanger from "@/components/theme-switcher";
 import { ProjectCard } from "@/components/project-card";
 import Footer from "@/components/footer";
 
-const links = [
-  { href: "mailto:hi@scheff.dev", label: "Mail" },
-  { href: "https://x.com/scheffchuk", label: "Twitter/X" },
-  { href: "https://www.instagram.com/scheff.d.chuk", label: "Instagram" },
-  { href: "https://github.com/scheffchuk", label: "GitHub" },
-  { href: "/guestbook", label: "Guestbook" },
-];
-
-const baseLinkClassName =
-  "text-accent-chrome rounded-sm transition-all duration-150 ease-out hover:opacity-70 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
-
-const isExternal = (href: string) =>
-  href.startsWith("http") || href.startsWith("mailto:");
+const inlineLinkClassName =
+  "text-accent-chrome rounded-sm underline decoration-accent/30 underline-offset-4 transition-all duration-150 ease-out hover:opacity-70 hover:decoration-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
 
 export default function Home() {
   return (
@@ -32,13 +21,12 @@ export default function Home() {
           <h1 className="text-accent-chrome font-medium tracking-tight">
             Scheff Chuk
           </h1>
-          <p className="text-accent-chrome-muted">Self-taught design engineer</p>
+          <p className="text-accent-chrome-muted">Design engineer</p>
         </div>
         <div className="flex flex-col items-start gap-y-4">
           <h2 className="text-accent-chrome font-medium">Today</h2>
-          <p className="text-accent-chrome-muted text-balance">
-            I am learning to build things that are beautiful and performant.
-            Leave me a note if you feel like it!
+          <p className="text-accent-chrome-muted text-pretty">
+            I am building things that are beautiful and performant with code. This site is my playground. Hope you enjoy it! Leave me a note if you want to!
           </p>
           <Link
             href="/guestbook"
@@ -52,11 +40,6 @@ export default function Home() {
           <h2 className="text-accent-chrome font-medium">Projects</h2>
           <div className="flex flex-col gap-y-4">
             <ProjectCard
-              title="My site"
-              description="My portfolio and playground."
-              websiteUrl="https://scheff.dev"
-            />
-            <ProjectCard
               title="HeadSalon"
               description="A blog web app for my favorite writer, WhigZhou."
               websiteUrl="https://headsalon.vercel.app/"
@@ -66,29 +49,35 @@ export default function Home() {
               description="A marketing site for a book store in Tokyo."
               websiteUrl="https://odycell.space/"
             />
+            <ProjectCard
+              title="Birds in Ueno Park"
+              description="A seasonal guide to birds you’ll meet in Ueno."
+              websiteUrl="https://birds-in-ueno-park.vercel.app/"
+            />
           </div>
         </div>
 
-        <div>
-          <h2 className="text-accent-chrome font-medium">Links</h2>
-          <div className="text-accent-chrome flex flex-wrap gap-x-4 py-2">
-            {links.map(({ href, label }) => {
-              const external = isExternal(href);
-              return (
-                <Link
-                  key={label}
-                  href={href}
-                  className={`${baseLinkClassName} ${external ? "decoration-accent/30 hover:decoration-accent/60 underline underline-offset-4" : ""}`}
-                  {...(external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                >
-                  {label}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
+        <p className="text-accent-chrome-muted text-balance">
+          You can read{" "}
+          <Link
+            href="https://github.com/scheffchuk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={inlineLinkClassName}
+          >
+            my code
+          </Link>
+          , or follow me{" "}
+          <Link
+            href="https://x.com/scheffchuk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={inlineLinkClassName}
+          >
+            online
+          </Link>
+          .
+        </p>
         <Footer />
       </div>
     </div>
