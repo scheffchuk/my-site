@@ -1,1 +1,0 @@
-export const accentBlockingScript = `(function(){try{var k="color-accent",l="color-theme",v=localStorage.getItem(k);if(!v){v=localStorage.getItem(l);if(v==="darkBlue")v="blue";if(v==="green"||v==="red"||v==="blue")localStorage.setItem(k,v);else v="blue";}if(v!=="green"&&v!=="red"&&v!=="blue")v="blue";document.documentElement.setAttribute("data-accent",v);}catch(e){}})();`;

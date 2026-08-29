@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { AppearanceSwitcher } from "@/components/appearance-switcher";
-import ThemeChanger from "@/components/theme-switcher";
+import { AccentSwitcher } from "@/components/accent-switcher";
 import { ProjectCard } from "@/components/project-card";
 import Footer from "@/components/footer";
 
@@ -13,7 +13,7 @@ export default function Home() {
       <header className="flex items-center justify-end gap-x-4 py-4">
         <div className="flex items-center gap-1">
           <AppearanceSwitcher />
-          <ThemeChanger />
+          <AccentSwitcher />
         </div>
       </header>
       <div className="flex flex-col gap-y-28">

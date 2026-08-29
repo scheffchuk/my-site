@@ -1,12 +1,10 @@
 "use client";
 
 import { PaintRoller } from "lucide-react";
-import { useAccent } from "@/hooks/use-accent";
+import { cycleAccent } from "@/lib/accent";
 import { Button } from "./ui/button";
 
-const ThemeChanger = () => {
-  const { cycleAccent } = useAccent();
-
+export function AccentSwitcher() {
   return (
     <Button
       type="button"
@@ -18,6 +16,4 @@ const ThemeChanger = () => {
       <PaintRoller aria-hidden={true} />
     </Button>
   );
-};
-
-export default ThemeChanger;
+}

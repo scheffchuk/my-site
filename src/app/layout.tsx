@@ -3,10 +3,10 @@ import "./globals.css";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
-import { AccentProvider } from "@/components/accent-provider";
+import { AccentApply } from "@/components/accent-apply";
 import { ThemeColorMeta } from "@/components/theme-color-meta";
+import { accentBlockingScript } from "@/lib/accent";
 import { cn } from "@/lib/utils";
-import { accentBlockingScript } from "@/lib/accent-blocking-script";
 import { QueryClientProviderWrapper } from "@/lib/query-client";
 import { ConvexClientProvider } from "@/lib/ConvexClientProvider";
 
@@ -20,22 +20,18 @@ export const metadata = {
     "Hi, I am Scheff. I am learning full-stack development by building sites and apps. Work mainly with React and Next.js.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className="scroll-smooth!"
-      data-accent="blue"
-      suppressHydrationWarning
-    >
+    <html lang="en" className="scroll-smooth!" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: accentBlockingScript }} />
       </head>
       <body className={cn(geist.className)}>
+        <AccentApply />
         <ConvexClientProvider>
           <QueryClientProviderWrapper>
             <ThemeProvider
@@ -46,10 +42,8 @@ export default async function RootLayout({
               disableTransitionOnChange
               themes={["light", "dark", "system"]}
             >
-              <AccentProvider>
-                <ThemeColorMeta />
-                {children}
-              </AccentProvider>
+              <ThemeColorMeta />
+              {children}
             </ThemeProvider>
           </QueryClientProviderWrapper>
         </ConvexClientProvider>

@@ -42,12 +42,13 @@
   --card-foreground: 0 0% 3.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 3.9%;
-  --primary: 0 0% 9%;
   --primary-foreground: oklch(0.984805 0 0);
   --secondary: 0 0% 96.1%;
   --secondary-foreground: 0 0% 9%;
   --muted: 0 0% 96.1%;
   --muted-foreground: 0 0% 45.1%;
+  --accent: oklch(0.443671 0.100259 240.8813);
+  --primary: var(--accent);
   --accent-foreground: 0 0% 9%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
@@ -64,12 +65,13 @@
   --card-foreground: 0 0% 98%;
   --popover: 0 0% 3.9%;
   --popover-foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
   --primary-foreground: oklch(0.204405 0 0);
   --secondary: 0 0% 14.9%;
   --secondary-foreground: 0 0% 98%;
   --muted: 0 0% 14.9%;
   --muted-foreground: 0 0% 63.9%;
+  --accent: oklch(0.62 0.11 241);
+  --primary: var(--accent);
   --accent-foreground: 0 0% 98%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
@@ -78,43 +80,20 @@
   --ring: 0 0% 83.1%;
 }
 
-@layer utilities {
-  :root[data-accent="green"],
-  :root[data-accent="red"],
-  :root[data-accent="blue"] {
-    --near-white: oklch(0.984805 0 0);
-    --primary-foreground: var(--near-white);
-  }
+:root[data-accent="green"] {
+  --accent: oklch(0.333593 0.079456 156.9814);
+}
 
-  :root[data-accent="green"] {
-    --accent: oklch(0.333593 0.079456 156.9814);
-    --primary: var(--accent);
-  }
+:root[data-accent="red"] {
+  --accent: oklch(0.482924 0.194811 22.723);
+}
 
-  :root[data-accent="red"] {
-    --accent: oklch(0.482924 0.194811 22.723);
-    --primary: var(--accent);
-  }
+.dark[data-accent="green"] {
+  --accent: oklch(0.58 0.09 157);
+}
 
-  :root[data-accent="blue"] {
-    --accent: oklch(0.443671 0.100259 240.8813);
-    --primary: var(--accent);
-  }
-
-  .dark[data-accent="green"] {
-    --accent: oklch(0.58 0.09 157);
-    --primary: var(--accent);
-  }
-
-  .dark[data-accent="red"] {
-    --accent: oklch(0.68 0.17 23);
-    --primary: var(--accent);
-  }
-
-  .dark[data-accent="blue"] {
-    --accent: oklch(0.62 0.11 241);
-    --primary: var(--accent);
-  }
+.dark[data-accent="red"] {
+  --accent: oklch(0.68 0.17 23);
 }
 
 @layer utilities {
