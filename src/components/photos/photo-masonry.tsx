@@ -4,7 +4,23 @@ import { photos, photoSlug } from "@/lib/photos";
 
 export function PhotoMasonry() {
   return (
-    <div className="min-[500px]:columns-2 min-[700px]:columns-3 min-[1100px]:columns-4 columns-1 gap-4 px-4 pt-16 pb-4">
+    <div className="min-[500px]:columns-2 min-[700px]:columns-3 min-[1100px]:columns-4 columns-1 gap-4 px-4 py-4">
+      <div className="mb-4 flex h-96 break-inside-avoid flex-col justify-between pr-16 min-[500px]:pr-0">
+        <div className="flex flex-col items-start gap-2">
+          <h1 className="text-accent-chrome font-medium tracking-tight">
+            Photos
+          </h1>
+          <Link
+            href="/"
+            className="text-accent-chrome-muted rounded-sm text-sm underline decoration-accent/30 underline-offset-4 transition-all duration-150 ease-out hover:opacity-70 hover:decoration-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          >
+            take me home
+          </Link>
+        </div>
+        <p className="text-accent-chrome-muted text-sm text-pretty">
+          Photos I keep from walking around Tokyo.
+        </p>
+      </div>
       {photos.map((photo) => (
         <Link
           key={photo.title}

@@ -3,7 +3,7 @@ import { PhotosChrome } from "@/components/photos/photos-chrome";
 
 export const metadata = {
   title: "Photos | Scheff Chuk",
-  description: "Photos.",
+  description: "Photos I keep from walking around Tokyo.",
 };
 
 export default function PhotosPage() {
