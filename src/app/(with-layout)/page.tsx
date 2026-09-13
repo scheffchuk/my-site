@@ -26,7 +26,12 @@ export default function Home() {
         <div className="flex flex-col items-start gap-y-4">
           <h2 className="text-accent-chrome font-medium">Today</h2>
           <p className="text-accent-chrome-muted text-pretty">
-            I am building things that are beautiful and performant with code. This site is my playground. Hope you enjoy it! Leave me a note if you want to!
+            I am building things that are beautiful and performant with code.
+            This site is my playground. Hope you enjoy it! Look at my{" "}
+            <Link href="/photos" className={inlineLinkClassName}>
+              photos
+            </Link>
+            , or leave me a note if you want to!
           </p>
           <Link
             href="/guestbook"
