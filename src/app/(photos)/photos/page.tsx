@@ -1,5 +1,4 @@
 import { PhotoMasonry } from "@/components/photos/photo-masonry";
-import { PhotosChrome } from "@/components/photos/photos-chrome";
 
 export const metadata = {
   title: "Photos | Scheff Chuk",
@@ -8,8 +7,7 @@ export const metadata = {
 
 export default function PhotosPage() {
   return (
-    <main className="relative min-h-dvh">
-      <PhotosChrome />
+    <main className="min-h-dvh">
       <PhotoMasonry />
     </main>
   );
