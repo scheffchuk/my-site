@@ -2,6 +2,7 @@ import "./globals.css";
 
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/next";
 
 import { AccentApply } from "@/components/accent-apply";
 import { ThemeColorMeta } from "@/components/theme-color-meta";
@@ -47,6 +48,7 @@ export default function RootLayout({
             </ThemeProvider>
           </QueryClientProviderWrapper>
         </ConvexClientProvider>
+        <Analytics />
       </body>
     </html>
   );
