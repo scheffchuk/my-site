@@ -26,7 +26,8 @@ export function PhotoMasonry() {
           </div>
         </div>
         <p className="text-accent-chrome-muted text-sm text-pretty">
-          Photos I keep from walking around Tokyo.
+          I capture, therefore I remember.<br />
+          拍下过，记住过。
         </p>
       </div>
       {photos.map((photo) => (

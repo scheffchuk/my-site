@@ -20,7 +20,9 @@ export function PhotoView({ photo }: { photo: Photo }) {
       />
       <figcaption className="absolute bottom-4 left-4 text-white">
         <p className="font-medium tracking-tight">{photo.title}</p>
-        <p className="text-sm text-white/70">{photo.takenAt}</p>
+        {photo.takenAt ? (
+          <p className="text-sm text-white/70">{photo.takenAt}</p>
+        ) : null}
       </figcaption>
     </figure>
   );
