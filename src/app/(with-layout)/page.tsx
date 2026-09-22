@@ -26,15 +26,17 @@ export default function Home() {
         <div className="flex flex-col items-start gap-y-4">
           <h2 className="text-accent-chrome font-medium">About Me</h2>
           <p className="text-accent-chrome-muted text-pretty">
-            I am learning to craft beautiful and performant things with code. Beside
-            tinkering with code, I like to read books and manga, watch movies, and walking around with my wife. I started to learn playing drums recently.
-            This site is my playground. I hope you find it interesting. Leave me a note if you want to!
+            I am learning to craft beautiful and performant things with code.
+            In my spare time, I like to cook, read, listen to music, watch movies, and walk around with my wife.
+            And I started to learn playing drums recently!
+            <br />
+            This site is my playground to try out new things. I hope you like it. Sign my guestbook if you like!
           </p>
           <Link
             href="/guestbook"
             className="bg-accent hover:bg-accent/90 text-primary-foreground rounded-xs px-2 py-1 font-medium transition-normal duration-150 ease-out active:scale-[0.98]"
           >
-            Leave a note
+            Guestbook
           </Link>
         </div>
 
@@ -59,8 +61,8 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="text-accent-chrome-muted text-balance">
-          You can look at {" "}
+        <p className="text-accent-chrome-muted text-pretty">
+          For more, you can look at {" "}
           <Link href="/photos" className={inlineLinkClassName}>
             photos
           </Link> I took, read{" "}
