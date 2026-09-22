@@ -21,17 +21,14 @@ export default function Home() {
           <h1 className="text-accent-chrome font-medium tracking-tight">
             Scheff Chuk
           </h1>
-          <p className="text-accent-chrome-muted">Design engineer</p>
+          <p className="text-accent-chrome-muted">Software engineer</p>
         </div>
         <div className="flex flex-col items-start gap-y-4">
-          <h2 className="text-accent-chrome font-medium">Today</h2>
+          <h2 className="text-accent-chrome font-medium">About Me</h2>
           <p className="text-accent-chrome-muted text-pretty">
-            I am building things that are beautiful and performant with code.
-            This site is my playground. Hope you enjoy it! Look at my{" "}
-            <Link href="/photos" className={inlineLinkClassName}>
-              photos
-            </Link>
-            , or leave me a note if you want to!
+            I am learning to craft beautiful and performant things with code. Beside
+            tinkering with code, I like to read books and manga, watch movies, and walking around with my wife. I started to learn playing drums recently.
+            This site is my playground. I hope you find it interesting. Leave me a note if you want to!
           </p>
           <Link
             href="/guestbook"
@@ -46,7 +43,7 @@ export default function Home() {
           <div className="flex flex-col gap-y-4">
             <ProjectCard
               title="HeadSalon"
-              description="A blog web app for my favorite writer, WhigZhou."
+              description="A blog archive for WhigZhou, the person who shaped my view on the world."
               websiteUrl="https://headsalon.vercel.app/"
             />
             <ProjectCard
@@ -55,15 +52,18 @@ export default function Home() {
               websiteUrl="https://odycell.space/"
             />
             <ProjectCard
-              title="Birds in Ueno Park"
-              description="A seasonal guide to birds you’ll meet in Ueno."
+              title="Ueno Birds"
+              description="A seasonal guide to birds you’ll meet in Ueno Park."
               websiteUrl="https://birds-in-ueno-park.vercel.app/"
             />
           </div>
         </div>
 
         <p className="text-accent-chrome-muted text-balance">
-          You can read{" "}
+          You can look at {" "}
+          <Link href="/photos" className={inlineLinkClassName}>
+            photos
+          </Link> I took, read{" "}
           <Link
             href="https://github.com/scheffchuk"
             target="_blank"
