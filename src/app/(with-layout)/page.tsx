@@ -29,6 +29,8 @@ export default function Home() {
             I am learning to craft beautiful and performant things with code.
             In my spare time, I like to cook, read, listen to music, watch movies, and walk around with my wife.
             And I started to learn playing drums recently!
+          </p>
+          <p className="text-accent-chrome-muted text-pretty">
             This site is my playground to try out new things. I hope you like it. Sign my guestbook if you like!
           </p>
           <Link
