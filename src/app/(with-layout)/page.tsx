@@ -29,7 +29,6 @@ export default function Home() {
             I am learning to craft beautiful and performant things with code.
             In my spare time, I like to cook, read, listen to music, watch movies, and walk around with my wife.
             And I started to learn playing drums recently!
-            <br />
             This site is my playground to try out new things. I hope you like it. Sign my guestbook if you like!
           </p>
           <Link
@@ -45,7 +44,7 @@ export default function Home() {
           <div className="flex flex-col gap-y-4">
             <ProjectCard
               title="HeadSalon"
-              description="A blog archive for WhigZhou, the person who shaped my view on the world."
+              description="A blog archive for WhigZhou, the person who shaped my worldview."
               websiteUrl="https://headsalon.vercel.app/"
             />
             <ProjectCard
