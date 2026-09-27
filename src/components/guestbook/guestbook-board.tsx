@@ -65,6 +65,15 @@ export function GuestbookBoard() {
           draggable={false}
         />
       </Sticker>
+      <Sticker initialX={420} initialY={380}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/just-javascript-certificate.jpg"
+          alt="Just JavaScript certificate of completion"
+          className="w-64 rounded-sm drop-shadow-md"
+          draggable={false}
+        />
+      </Sticker>
 
       <Link
         href="/"
