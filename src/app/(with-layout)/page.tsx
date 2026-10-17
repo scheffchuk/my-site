@@ -5,7 +5,7 @@ import { ProjectCard } from "@/components/project-card";
 import Footer from "@/components/footer";
 
 const inlineLinkClassName =
-  "text-accent-chrome rounded-sm underline decoration-accent/30 underline-offset-4 transition-all duration-150 ease-out hover:opacity-70 hover:decoration-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
+  "text-accent-chrome rounded-sm underline decoration-accent/30 underline-offset-4 transition-opacity duration-150 ease-out pointer-fine:hover:opacity-70 hover:decoration-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
 
 export default function Home() {
   return (
@@ -35,7 +35,7 @@ export default function Home() {
           </p>
           <Link
             href="/guestbook"
-            className="bg-accent hover:bg-accent/90 text-primary-foreground rounded-xs px-2 py-1 font-medium transition-normal duration-150 ease-out active:scale-[0.98]"
+            className="press-feedback bg-accent hover:bg-accent/90 text-primary-foreground rounded-xs px-2 py-1 font-medium"
           >
             Guestbook
           </Link>
