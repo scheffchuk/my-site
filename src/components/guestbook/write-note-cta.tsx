@@ -249,6 +249,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
                         }}
                         placeholder="Your name..."
                         autoComplete="name"
+                        enterKeyHint="next"
                         className={cn(inputClassName, nameError && "border-destructive focus-visible:ring-destructive")}
                         aria-invalid={!!nameError}
                       />
@@ -305,7 +306,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
       case "signature":
         return (
           <div className="space-y-2">
-            <div className="relative flex h-36 w-full flex-col overflow-hidden rounded-md border border-input bg-background">
+            <div className="relative flex h-36 w-full touch-none flex-col overflow-hidden overscroll-contain rounded-md border border-input bg-background select-none">
               <Signature ref={signatureRef} options={{
                 size: 10,
                 thinning: 0.25,
@@ -314,7 +315,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
             <button
               type="button"
               onClick={() => signatureRef.current?.clear?.()}
-              className="text-muted-foreground hover:text-foreground text-sm"
+              className="press-feedback text-muted-foreground hover:text-foreground text-sm"
             >
               Clear
             </button>
@@ -327,14 +328,14 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
 
   return (
     <MotionConfig transition={transition}>
-      <div ref={ref} className="absolute bottom-4 right-4 z-50 sm:bottom-8 sm:right-8">
+      <div
+        ref={ref}
+        className="absolute bottom-4 right-4 z-50 w-72 max-w-[calc(100%-2rem)] sm:bottom-8 sm:right-8 sm:max-w-[calc(100%-4rem)]"
+      >
         <form onSubmit={handleSubmit} aria-busy={loading}>
           <div
             ref={menuRef}
-            className={cn(
-              "w-72 overflow-hidden rounded-lg border border-border bg-background/95 shadow-lg backdrop-blur-sm",
-              step === "signature" && "touch-none overscroll-none select-none",
-            )}
+            className="flex max-h-[calc(100dvh-4rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] w-full flex-col overflow-hidden rounded-lg border border-border bg-background/95 shadow-lg backdrop-blur-sm"
           >
             <AnimatePresence initial={false} mode="sync">
               {isOpen ? (
@@ -343,7 +344,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
                   initial={{ height: 0 }}
                   animate={{ height: heightContent || 0 }}
                   exit={{ height: 0 }}
-                  className="overflow-hidden"
+                  className="min-h-0 overflow-y-auto overscroll-contain"
                 >
                   <div ref={contentRef} className="p-4">
                     {step === "form" && (
@@ -380,7 +381,7 @@ export function WriteNoteCTA({ onEntryCreated }: WriteNoteCTAProps) {
               disabled={loading}
               aria-busy={loading}
               className={cn(
-                "inline-flex w-full items-center justify-center gap-2 px-4 py-3 text-sm font-medium",
+                "press-feedback inline-flex w-full shrink-0 items-center justify-center gap-2 px-4 py-3 text-sm font-medium",
                 "hover:bg-accent/10 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
                 "disabled:opacity-70",
               )}

@@ -12,16 +12,28 @@ export function ThemeColorMeta() {
   const { resolvedTheme } = useTheme();
 
   useEffect(() => {
+    if (!resolvedTheme) return;
+
     const color =
       resolvedTheme === "dark" ? THEME_COLORS.dark : THEME_COLORS.light;
 
-    let meta = document.querySelector('meta[name="theme-color"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "theme-color");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", color);
+    const syncThemeColor = () => {
+      document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+        if (meta.getAttribute("content") !== color) {
+          meta.setAttribute("content", color);
+        }
+      });
+    };
+
+    syncThemeColor();
+    const observer = new MutationObserver(syncThemeColor);
+    observer.observe(document.head, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["content"],
+    });
+    return () => observer.disconnect();
   }, [resolvedTheme]);
 
   return null;

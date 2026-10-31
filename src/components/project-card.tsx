@@ -14,7 +14,7 @@ const ProjectCard = ({ title, description, websiteUrl }: ProjectCardProps) => {
       href={websiteUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="hover:bg-accent/10 -mx-2 flex flex-col rounded-sm p-2"
+      className="hover:bg-accent/10 active:bg-accent/10 -mx-2 flex flex-col rounded-sm p-2"
     >
       <h3 className="text-accent-chrome">{title}</h3>
       <p className="text-accent-chrome-muted">{description}</p>

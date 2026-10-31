@@ -15,7 +15,7 @@ export function PhotoMasonry() {
             </h1>
             <Link
               href="/"
-              className="text-accent-chrome-muted decoration-accent/30 hover:decoration-accent/60 focus-visible:ring-ring rounded-sm text-sm underline underline-offset-4 transition-opacity duration-150 ease-out pointer-fine:hover:opacity-70 focus-visible:ring-2 focus-visible:outline-none"
+              className="text-accent-chrome-muted decoration-accent/30 hover:decoration-accent/60 focus-visible:ring-ring rounded-sm text-sm underline underline-offset-4 transition-opacity duration-150 ease-out hover:opacity-70 active:opacity-70 focus-visible:ring-2 focus-visible:outline-none"
             >
               take me home
             </Link>

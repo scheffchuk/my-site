@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import type { Viewport } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/next";
@@ -19,6 +20,17 @@ export const metadata = {
   title: "Scheff Chuk",
   description:
     "Hi, I am Scheff. I am learning full-stack development by building sites and apps. Work mainly with React and Next.js.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export default function RootLayout({
