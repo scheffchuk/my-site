@@ -62,30 +62,8 @@
 }
 
 @layer components {
-  .photo-dialog {
-    transition: opacity 250ms var(--ease-out);
-
-    @starting-style {
-      opacity: 0;
-    }
-  }
-
-  .photo-dialog-content {
-    transition: transform 250ms var(--ease-out);
-
-    @starting-style {
-      transform: scale(0.96);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .photo-dialog-content {
-      transition: none;
-
-      @starting-style {
-        transform: none;
-      }
-    }
+  .photo-lightbox-backdrop {
+    opacity: calc(1 - var(--lightbox-pull-progress, 0));
   }
 }
 

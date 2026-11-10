@@ -1,4 +1,4 @@
-export type Photo = {
+type Photo = {
   title: string;
   takenAt?: string;
   src: string;

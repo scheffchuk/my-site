@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
-import { PhotoDialog } from "@/components/photos/photo-dialog";
-import { PhotoView } from "@/components/photos/photo-view";
+import { PhotoGallery } from "@/components/photos/photo-gallery";
 import { photoBySlug, photos, photoSlug } from "@/lib/photos";
 
 export function generateStaticParams() {
@@ -33,9 +32,5 @@ export default async function PhotoPage({
     notFound();
   }
 
-  return (
-    <PhotoDialog>
-      <PhotoView photo={photo} />
-    </PhotoDialog>
-  );
+  return <PhotoGallery />;
 }

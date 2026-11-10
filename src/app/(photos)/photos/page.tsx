@@ -1,4 +1,4 @@
-import { PhotoMasonry } from "@/components/photos/photo-masonry";
+import { PhotoGallery } from "@/components/photos/photo-gallery";
 
 export const metadata = {
   title: "Photos | Scheff Chuk",
@@ -6,9 +6,5 @@ export const metadata = {
 };
 
 export default function PhotosPage() {
-  return (
-    <main className="min-h-dvh">
-      <PhotoMasonry />
-    </main>
-  );
+  return <PhotoGallery />;
 }

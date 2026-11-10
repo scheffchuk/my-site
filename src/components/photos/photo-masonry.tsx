@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import * as Lightbox from "@ramka/react/lightbox";
 import { AppearanceSwitcher } from "@/components/appearance-switcher";
 import { AccentSwitcher } from "@/components/accent-switcher";
-import { photos, photoSlug } from "@/lib/photos";
+import { photos } from "@/lib/photos";
 
 export function PhotoMasonry() {
   return (
@@ -15,7 +18,7 @@ export function PhotoMasonry() {
             </h1>
             <Link
               href="/"
-              className="text-accent-chrome-muted decoration-accent/30 hover:decoration-accent/60 focus-visible:ring-ring rounded-sm text-sm underline underline-offset-4 transition-opacity duration-150 ease-out hover:opacity-70 active:opacity-70 focus-visible:ring-2 focus-visible:outline-none"
+              className="text-accent-chrome-muted decoration-accent/30 hover:decoration-accent/60 focus-visible:ring-ring rounded-sm text-sm underline underline-offset-4 transition-opacity duration-150 ease-out hover:opacity-70 focus-visible:ring-2 focus-visible:outline-none active:opacity-70"
             >
               take me home
             </Link>
@@ -31,22 +34,24 @@ export function PhotoMasonry() {
           拍下过，记住过。
         </p>
       </div>
-      {photos.map((photo) => (
-        <Link
+      {photos.map((photo, index) => (
+        <Lightbox.Trigger
           key={photo.title}
-          href={`/photos/${photoSlug(photo.title)}`}
-          scroll={false}
-          className="press-feedback border-border focus-visible:ring-ring focus-visible:ring-offset-background mb-2 block break-inside-avoid overflow-hidden rounded-lg border focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          index={index}
+          className="press-feedback border-border focus-visible:ring-ring focus-visible:ring-offset-background mb-2 block w-full cursor-zoom-in break-inside-avoid overflow-hidden rounded-lg border focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
         >
-          <Image
-            src={photo.src}
-            alt={photo.title}
-            width={photo.width}
-            height={photo.height}
-            className="h-auto w-full"
-            sizes="(max-width: 499px) 100vw, (max-width: 699px) 50vw, (max-width: 1099px) 33vw, 25vw"
-          />
-        </Link>
+          {({ imageRef }) => (
+            <Image
+              ref={imageRef}
+              src={photo.src}
+              alt={photo.title}
+              width={photo.width}
+              height={photo.height}
+              className="h-auto w-full"
+              sizes="(max-width: 499px) 100vw, (max-width: 699px) 50vw, (max-width: 1099px) 33vw, 25vw"
+            />
+          )}
+        </Lightbox.Trigger>
       ))}
     </div>
   );
