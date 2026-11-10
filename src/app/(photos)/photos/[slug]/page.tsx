@@ -32,5 +32,5 @@ export default async function PhotoPage({
     notFound();
   }
 
-  return <PhotoGallery />;
+  return <PhotoGallery initialIndex={photos.indexOf(photo)} />;
 }

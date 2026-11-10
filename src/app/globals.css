@@ -61,12 +61,6 @@
   }
 }
 
-@layer components {
-  .photo-lightbox-backdrop {
-    opacity: calc(1 - var(--lightbox-pull-progress, 0));
-  }
-}
-
 :root {
   --background: 0 0% 100%;
   --foreground: 0 0% 3.9%;

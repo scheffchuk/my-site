@@ -1,63 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
-import * as Lightbox from "@ramka/react/lightbox";
-import { photos, photoSlug } from "@/lib/photos";
-import { PhotoDialog } from "./photo-dialog";
+import { Lightbox } from "@/components/ui/lightbox";
+import { photos } from "@/lib/photos";
 import { PhotoMasonry } from "./photo-masonry";
 
-const photoPaths = photos.map((photo) => `/photos/${photoSlug(photo.title)}`);
+const items = photos.map((photo) => ({
+  id: photo.src,
+  src: photo.src,
+  thumb: photo.src,
+  alt: photo.title,
+  caption: photo.takenAt ? `${photo.title} · ${photo.takenAt}` : photo.title,
+  width: photo.width,
+  height: photo.height,
+}));
 
-export function PhotoGallery() {
-  const pathname = usePathname();
-  const urlIndex = photoPaths.indexOf(pathname);
-  const [open, setOpen] = useState(urlIndex !== -1);
-  const [index, setIndex] = useState(Math.max(0, urlIndex));
-  const openRef = useRef(open);
-  const indexRef = useRef(index);
-
-  useEffect(() => {
-    function syncFromHistory() {
-      const nextIndex = photoPaths.indexOf(window.location.pathname);
-      openRef.current = nextIndex !== -1;
-      setOpen(nextIndex !== -1);
-      if (nextIndex !== -1) {
-        indexRef.current = nextIndex;
-        setIndex(nextIndex);
-      }
-    }
-
-    window.addEventListener("popstate", syncFromHistory);
-    return () => window.removeEventListener("popstate", syncFromHistory);
-  }, []);
-
-  useEffect(() => {
-    document.title = open
-      ? `${photos[index].title} | Scheff Chuk`
-      : "Photos | Scheff Chuk";
-  }, [open, index]);
-
+export function PhotoGallery({ initialIndex }: { initialIndex?: number }) {
   return (
     <Lightbox.Root
-      open={open}
-      value={index}
-      onOpenChange={(nextOpen) => {
-        openRef.current = nextOpen;
-        setOpen(nextOpen);
-        if (nextOpen) {
-          window.history.pushState(null, "", photoPaths[indexRef.current]);
-        } else {
-          window.history.replaceState(null, "", "/photos");
-        }
-      }}
-      onValueChange={(nextIndex) => {
-        indexRef.current = nextIndex;
-        setIndex(nextIndex);
-        if (openRef.current) {
-          window.history.replaceState(null, "", photoPaths[nextIndex]);
-        }
-      }}
+      defaultOpen={initialIndex !== undefined}
+      defaultValue={initialIndex ?? 0}
       scrollTriggerIntoView={[
         { type: "onChange", behavior: "instant" },
         { type: "onOpenComplete", behavior: "instant" },
@@ -66,7 +27,15 @@ export function PhotoGallery() {
       <main className="min-h-dvh">
         <PhotoMasonry />
       </main>
-      <PhotoDialog />
+      <Lightbox.Gallery
+        items={items}
+        ariaLabel="Photo viewer"
+        portalProps={
+          initialIndex !== undefined
+            ? { container: null, className: "relative z-50" }
+            : undefined
+        }
+      />
     </Lightbox.Root>
   );
 }

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import * as Lightbox from "@ramka/react/lightbox";
+import { Lightbox } from "@/components/ui/lightbox";
 import { AppearanceSwitcher } from "@/components/appearance-switcher";
 import { AccentSwitcher } from "@/components/accent-switcher";
 import { photos } from "@/lib/photos";
